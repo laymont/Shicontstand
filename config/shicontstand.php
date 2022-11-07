@@ -50,4 +50,15 @@ return [
      * The following table shows the multiplication factors
      */
     'calculation_step_two' => [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
+
+    /**
+     * table names
+     */
+    'tables' => [
+        'type_groups' => 'scs_type_groups',
+        'size_types' => 'scs_size_types',
+        'length_codes' => 'scs_length_codes',
+        'size_codes' => 'scs_size_codes',
+        'type_codes' => 'scs_type_codes'
+    ]
 ];

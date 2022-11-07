@@ -2,13 +2,16 @@
 
 namespace Laymont\Shicontstand\Models;
 
-class LengthCode extends \Illuminate\Database\Eloquent\Model
+use Illuminate\Database\Eloquent\Model;
+
+class LengthCode extends Model
 {
-    protected $guarded = [
-        'id',
-        'code',
-        'container_length',
-    ];
+    protected $guarded = [];
+
+    public function getTable()
+    {
+        return config('shicontstand.tables.length_codes');
+    }
 
     protected $dates = [
         'created_at',

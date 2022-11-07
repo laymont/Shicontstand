@@ -6,28 +6,28 @@ use Generator;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Str;
 
-trait PublishesMigrations
+trait PublishesSeeders
 {
     /**
      * Searches migrations and publishes them as assets.
      *
-     * @param string $directory
+     * @param string $string
      * @return void
      * @throws BindingResolutionException
      */
-    protected function registerMigrations(string $directory): void
+    protected function registerSeeders(string $string): void
     {
         if ($this->app->runningInConsole()) {
             $generator = function (string $directory): Generator {
                 foreach ($this->app->make('files')->allFiles($directory) as $file) {
                     yield $file->getPathname() => $this->app->databasePath(
-                        'migrations/'.now()->format('Y_m_d_His').Str::remove('.stub', Str::after($file->getFilename(), 'create_scs'))
+                        'seeders/'.now()->format('Y_m_d_His').Str::remove('.stub', Str::after($file->getFilename(), 'create_scs'))
                     );
                     sleep(1);
                 }
             };
 
-            $this->publishes(iterator_to_array($generator($directory)), 'shicontstand-migrations');
+            $this->publishes(iterator_to_array($generator($directory)), 'shicontstand-seeders');
         }
     }
 }

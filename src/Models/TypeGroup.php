@@ -2,13 +2,16 @@
 
 namespace Laymont\Shicontstand\Models;
 
-class TypeGroup extends \Illuminate\Database\Eloquent\Model
+use Illuminate\Database\Eloquent\Model;
+
+class TypeGroup extends Model
 {
-    protected $guarded = [
-        'id',
-        'code',
-        'description',
-    ];
+    protected $guarded = [];
+
+    public function getTable()
+    {
+        return config('shicontstand.tables.type_groups');
+    }
 
     protected $dates = [
         'created_at',
