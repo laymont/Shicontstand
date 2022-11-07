@@ -1,0 +1,57 @@
+{
+    "name": "laymont/shicontstand",
+    "description": ":package_description",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Author Name",
+            "email": "author@email.com",
+            "homepage": "http://author.com"
+        }
+    ],
+    "homepage": "https://github.com/laymont/shicontstand",
+    "keywords": ["Laravel", "Shicontstand"],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "~9"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5",
+        "phpstan/phpstan": "^1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laymont\\Shicontstand\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Laymont\\Shicontstand\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laymont\\Shicontstand\\ShicontstandServiceProvider"
+            ],
+            "aliases": {
+                "Shicontstand": "Laymont\\Shicontstand\\Facades\\Shicontstand"
+            }
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    }
+}
