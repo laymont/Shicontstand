@@ -92,6 +92,6 @@ class SizeTypeSeeder extends \Illuminate\Database\Seeder
             ['type_group_code' => 'L2GP', 'code' => 'L2G1', 'description' => '	HIGH CUBE CONT.'],
             ['type_group_code' => 'L5GP', 'code' => 'L5G1', 'description' => '	HIGH CUBE CONT.'],
 
-        ])->each(fn($item) => SizeType::create($item));
+        ])->each(fn ($item) => SizeType::create($item));
     }
 }

@@ -92,6 +92,6 @@ class TypeGroupSeeder extends Seeder
             ['code' => 'L2GP', 'description' => '	HIGH CUBE CONT.	'],
             ['code' => 'L5GP', 'description' => '	HIGH CUBE CONT.	'],
 
-        ])->each(fn($item) => TypeGroup::create($item));
+        ])->each(fn ($item) => TypeGroup::create($item));
     }
 }

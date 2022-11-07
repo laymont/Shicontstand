@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class ShicontstandServiceProvider extends ServiceProvider
 {
     use PublishesMigrations;
+
     /**
      * Perform post-registration booting of services.
      *
@@ -19,8 +20,7 @@ class ShicontstandServiceProvider extends ServiceProvider
             $this->bootForConsole();
             $this->registerMigrations(__DIR__.'../database/migrations');
             $this->publishes([
-                __DIR__.'../config/shicontstand.php' =>
-                config_path('shicontstand.php')
+                __DIR__.'../config/shicontstand.php' => config_path('shicontstand.php'),
             ], 'shicontstand-config');
         }
     }

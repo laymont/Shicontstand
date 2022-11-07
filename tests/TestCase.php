@@ -3,8 +3,8 @@
 namespace Laymont\Shicontstand\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Laymont\Shicontstand\ShicontstandServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

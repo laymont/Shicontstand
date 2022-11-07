@@ -8,7 +8,7 @@ class SizeType extends \Illuminate\Database\Eloquent\Model
         'id',
         'type_group_code',
         'code',
-        'description'
+        'description',
     ];
 
     protected $dates = [

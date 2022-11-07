@@ -7,7 +7,7 @@ class TypeCode extends \Illuminate\Database\Eloquent\Model
     protected $guarded = [
         'id',
         'code',
-        'description'
+        'description',
     ];
 
     protected $dates = [
