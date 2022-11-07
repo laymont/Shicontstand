@@ -17,9 +17,9 @@ class ShicontstandServiceProvider extends ServiceProvider
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
-            $this->registerMigrations(__DIR__.'../database/migrations');
+            $this->registerMigrations(__DIR__.'database/migrations');
             $this->publishes([
-                __DIR__.'../config/shicontstand.php' =>
+                __DIR__.'config/shicontstand.php' =>
                 config_path('shicontstand.php')
             ], 'shicontstand-config');
         }
@@ -32,7 +32,7 @@ class ShicontstandServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/shicontstand.php', 'shicontstand');
+        $this->mergeConfigFrom(__DIR__.'config/shicontstand.php', 'shicontstand');
 
         // Register the service the package provides.
         $this->app->singleton('shicontstand', function ($app) {
@@ -59,25 +59,7 @@ class ShicontstandServiceProvider extends ServiceProvider
     {
         // Publishing the configuration file.
         $this->publishes([
-            __DIR__.'/../config/shicontstand.php' => config_path('shicontstand.php'),
+            __DIR__.'config/shicontstand.php' => config_path('shicontstand.php'),
         ], 'shicontstand.config');
-
-        // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/laymont'),
-        ], 'shicontstand.views');*/
-
-        // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/laymont'),
-        ], 'shicontstand.views');*/
-
-        // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/laymont'),
-        ], 'shicontstand.views');*/
-
-        // Registering package commands.
-        // $this->commands([]);
     }
 }
