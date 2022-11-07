@@ -59,6 +59,6 @@ return [
         'size_types' => 'scs_size_types',
         'length_codes' => 'scs_length_codes',
         'size_codes' => 'scs_size_codes',
-        'type_codes' => 'scs_type_codes'
-    ]
+        'type_codes' => 'scs_type_codes',
+    ],
 ];

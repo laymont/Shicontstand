@@ -13,6 +13,7 @@ class ShicontstandServiceProvider extends ServiceProvider
      * Perform post-registration booting of services.
      *
      * @return void
+     *
      * @throws BindingResolutionException
      */
     public function boot(): void
@@ -64,8 +65,7 @@ class ShicontstandServiceProvider extends ServiceProvider
     protected function bootForConsole(): void
     {
         $this->publishes([
-            __DIR__.'/../config/shicontstand.php' =>
-                config_path('shicontstand.php')
+            __DIR__.'/../config/shicontstand.php' => config_path('shicontstand.php'),
         ], 'shicontstand-config');
     }
 }
