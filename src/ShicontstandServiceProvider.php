@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 class ShicontstandServiceProvider extends ServiceProvider
 {
     use PublishesMigrations;
-
+    use PublishesSeeders;
     /**
      * Perform post-registration booting of services.
      *

@@ -11,12 +11,11 @@ trait PublishesSeeders
     /**
      * Searches migrations and publishes them as assets.
      *
-     * @param  string  $string
+     * @param string $directory
      * @return void
-     *
      * @throws BindingResolutionException
      */
-    protected function registerSeeders(string $string): void
+    protected function registerSeeders(string $directory): void
     {
         if ($this->app->runningInConsole()) {
             $generator = function (string $directory): Generator {
