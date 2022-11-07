@@ -5,8 +5,7 @@
     "authors": [
         {
             "name": "Author Name",
-            "email": "author@email.com",
-            "homepage": "http://author.com"
+            "email": "author@email.com"
         }
     ],
     "homepage": "https://github.com/laymont/shicontstand",
@@ -30,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Laymont\\Shicontstand\\": "src/"
+            "Laymont\\Shicontstand\\": "src"
         }
     },
     "autoload-dev": {

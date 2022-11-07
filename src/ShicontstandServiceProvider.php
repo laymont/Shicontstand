@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 class ShicontstandServiceProvider extends ServiceProvider
 {
+    use PublishesMigrations;
     /**
      * Perform post-registration booting of services.
      *
@@ -13,14 +14,14 @@ class ShicontstandServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laymont');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laymont');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
-
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
+            $this->registerMigrations(__DIR__.'../database/migrations');
+            $this->publishes([
+                __DIR__.'../config/shicontstand.php' =>
+                config_path('shicontstand.php')
+            ], 'shicontstand-config');
         }
     }
 
@@ -44,7 +45,7 @@ class ShicontstandServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return ['shicontstand'];
     }
