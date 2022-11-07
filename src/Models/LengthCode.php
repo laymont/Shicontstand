@@ -7,7 +7,7 @@ class LengthCode extends \Illuminate\Database\Eloquent\Model
     protected $guarded = [
         'id',
         'code',
-        'container_length'
+        'container_length',
     ];
 
     protected $dates = [

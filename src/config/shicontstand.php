@@ -5,18 +5,16 @@ return [
     /**
      * The equipment category identifier consists of one of the following capital letters of the Latin alphabet
      */
-
     'equipment_category_identifier' => [
         ['u' => 'for all freight containers'],
         ['J' => 'for detachable freight container-related equipment'],
-        ['Z' => 'for trailers and chassis']
+        ['Z' => 'for trailers and chassis'],
     ],
 
     /**
      * An equivalent numerical value is assigned to each letter of the alphabet,
      * beginning with 10 for the letter A (11 and multiples thereof are omitted)
      */
-
     'calculation_step_one' => [
         ['A' => 10],
         ['B' => 12],
@@ -51,6 +49,5 @@ return [
      * Position starts at 0, from left to right.
      * The following table shows the multiplication factors
      */
-
     'calculation_step_two' => [1, 2, 4, 8, 16, 32, 64, 128, 256, 512],
 ];
