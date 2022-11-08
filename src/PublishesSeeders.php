@@ -4,15 +4,15 @@ namespace Laymont\Shicontstand;
 
 use Generator;
 use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Support\Str;
 
 trait PublishesSeeders
 {
     /**
      * Searches migrations and publishes them as assets.
      *
-     * @param string $directory
+     * @param  string  $directory
      * @return void
+     *
      * @throws BindingResolutionException
      */
     protected function registerSeeders(string $directory): void

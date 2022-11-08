@@ -22,6 +22,7 @@ class ShicontstandCommand extends Command
         Artisan::call('db:seed --class=SizeCodeSeeder');
         Artisan::call('db:seed --class=TypeCodeSeeder');
         $this->comment('All done');
+
         return self::SUCCESS;
     }
 }
