@@ -1,10 +1,10 @@
 <?php
 
-namespace Illuminate\Database;
+namespace Database\Seeders;
 
 use Laymont\Shicontstand\Models\TypeCode;
 
-class TypeCodeSeeder extends Seeder
+class TypeCodeSeeder extends \Illuminate\Database\Seeder
 {
     public function run()
     {

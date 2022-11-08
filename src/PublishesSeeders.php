@@ -21,7 +21,7 @@ trait PublishesSeeders
             $generator = function (string $directory): Generator {
                 foreach ($this->app->make('files')->allFiles($directory) as $file) {
                     yield $file->getPathname() => $this->app->databasePath(
-                        'seeders/'.now()->format('Y_m_d_His').Str::remove('.stub', Str::after($file->getFilename(), 'create_scs'))
+                        'seeders/'.$file->getFilename()
                     );
                     sleep(1);
                 }

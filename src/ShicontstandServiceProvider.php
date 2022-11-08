@@ -3,7 +3,9 @@
 namespace Laymont\Shicontstand;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Database\Console\Seeds\SeedCommand;
 use Illuminate\Support\ServiceProvider;
+use Laymont\Shicontstand\Commands\ShicontstandCommand;
 
 class ShicontstandServiceProvider extends ServiceProvider
 {
@@ -29,6 +31,10 @@ class ShicontstandServiceProvider extends ServiceProvider
             $this->bootForConsole();
             $this->registerMigrations(__DIR__.'/../database/migrations');
             $this->registerSeeders(__DIR__.'/../database/seeders');
+            $this->commands([
+                ShicontstandCommand::class
+            ]);
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         }
     }
 
@@ -39,12 +45,12 @@ class ShicontstandServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/shicontstand.php', 'shicontstand');
-
         // Register the service the package provides.
         $this->app->singleton('shicontstand', function ($app) {
             return new Shicontstand;
         });
+
+        $this->mergeConfigFrom(__DIR__.'/../config/shicontstand.php', 'shicontstand');
     }
 
     /**

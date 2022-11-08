@@ -8,6 +8,8 @@ use Illuminate\Support\Str;
 
 trait PublishesMigrations
 {
+    protected bool $exists;
+
     /**
      * Searches migrations and publishes them as assets.
      *

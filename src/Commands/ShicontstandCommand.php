@@ -15,34 +15,13 @@ class ShicontstandCommand extends Command
     public function handle(): int
     {
         $this->info('Run Shicontstand Seeder');
-
-        if ($this->seedExists(database_path('seeders').'TypeGroupSeeder.php')) {
-            Artisan::call('db:seed --class=TypeGroupSeeder');
-        }
-
-        if ($this->seedExists(database_path('seeders').'SizeTypeSeeder.php')) {
-            Artisan::call('db:seed --class=SizeTypeSeeder');
-        }
-
-        if ($this->seedExists(database_path('seeders').'LengthCodeSeeder.php')) {
-            Artisan::call('db:seed --class=LengthCodeSeeder');
-        }
-
-        if ($this->seedExists(database_path('seeders').'SizeCodeSeeder.php')) {
-            Artisan::call('db:seed --class=SizeCodeSeeder');
-        }
-
-        if ($this->seedExists(database_path('seeders').'TypeCodeSeeder.php')) {
-            Artisan::call('db:seed --class=TypeCodeSeeder');
-        }
-
+        //$migrations = File::files(database_path('seeders'));
+        Artisan::call('db:seed --class=TypeGroupSeeder');
+        Artisan::call('db:seed --class=SizeTypeSeeder');
+        Artisan::call('db:seed --class=LengthCodeSeeder');
+        Artisan::call('db:seed --class=SizeCodeSeeder');
+        Artisan::call('db:seed --class=TypeCodeSeeder');
         $this->comment('All done');
         return self::SUCCESS;
     }
-
-    private function seedExists($filename): bool
-    {
-        return File::exists($filename);
-    }
-
 }
