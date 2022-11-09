@@ -11,6 +11,9 @@ class TypeGroupResource extends JsonResource
 {
     public function toArray($request): array|JsonSerializable|Arrayable
     {
-        return parent::toArray($request);
+        return [
+            'code' => $this->code,
+            'description' => $this->description,
+        ];
     }
 }

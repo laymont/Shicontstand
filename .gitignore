@@ -1,6 +1,6 @@
 .idea
 .phpunit.result.cache
-../../../laymont/shicont/shicontstand/build
+build
 composer.lock
 coverage
 docs

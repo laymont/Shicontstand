@@ -10,27 +10,27 @@ use Laymont\Shicontstand\Models\SizeCode;
 
 class ShicontstandController extends Controller
 {
-    public function getIsoTypeGroup(): \Illuminate\Database\Eloquent\Collection
+    public function getTypeGroup(): \Illuminate\Database\Eloquent\Collection
     {
         return TypeGroup::all();
     }
 
-    public function getIsoSizeType(): \Illuminate\Database\Eloquent\Collection
+    public function getSizeType(): \Illuminate\Database\Eloquent\Collection
     {
         return SizeType::all();
     }
 
-    public function getIsoLengthCode(): \Illuminate\Database\Eloquent\Collection
+    public function getLengthCode(): \Illuminate\Database\Eloquent\Collection
     {
         return LengthCode::all();
     }
 
-    public function getIsoSizeCode(): \Illuminate\Database\Eloquent\Collection
+    public function getSizeCode(): \Illuminate\Database\Eloquent\Collection
     {
         return SizeCode::all();
     }
 
-    public function getIsoTypeCode(): \Illuminate\Database\Eloquent\Collection
+    public function getTypeCode(): \Illuminate\Database\Eloquent\Collection
     {
         return TypeCode::all();
     }

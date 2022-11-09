@@ -12,13 +12,14 @@
     "keywords": ["Laravel", "Shicontstand"],
     "require": {
         "php": "^8.1",
-        "illuminate/support": "~9"
+        "illuminate/support": "~9",
+        "illuminate/contracts": "^9.39"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
-        "nunomaduro/collision": "^6.0",
+        "nunomaduro/collision": "^6.3",
         "nunomaduro/larastan": "^2.0.1",
-        "orchestra/testbench": "^7.0",
+        "orchestra/testbench": "^7.11",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.1",
         "phpstan/extension-installer": "^1.1",
@@ -29,13 +30,19 @@
     },
     "autoload": {
         "psr-4": {
-            "Laymont\\Shicontstand\\": "src"
+            "Laymont\\Shicontstand\\": "src",
+            "Laymont\\Shicontstand\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "Laymont\\Shicontstand\\Tests\\": "tests"
         }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ]
     },
     "extra": {
         "laravel": {

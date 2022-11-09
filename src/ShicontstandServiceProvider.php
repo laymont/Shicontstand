@@ -3,19 +3,15 @@
 namespace Laymont\Shicontstand;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Database\Console\Seeds\SeedCommand;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
-use Laymont\Shicontstand\Commands\ShicontstandCommand;
+use Illuminate\Support\Facades\Route;
 
-class ShicontstandServiceProvider extends ServiceProvider
+class ShicontstandServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    use PublishesMigrations;
-    use PublishesSeeders;
     /**
      * Perform post-registration booting of services.
-     *
      * @return void
-     *
      * @throws BindingResolutionException
      */
     public function boot(): void
@@ -28,13 +24,23 @@ class ShicontstandServiceProvider extends ServiceProvider
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
-            $this->bootForConsole();
-            $this->registerMigrations(__DIR__.'/../database/migrations');
-            $this->registerSeeders(__DIR__.'/../database/seeders');
-            $this->commands([
-                ShicontstandCommand::class
-            ]);
-            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+
+            $this->registerRoutes();
+
+            $this->publishes([
+                __DIR__.'/../config/shicontstand.php' => config_path('shicontstand.php'),
+            ], 'shicontstand-config');
+
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+            $this->publishes([
+                __DIR__.'/../database/seeders/TypeGroupSeeder.php' => database_path('seeders/TypeGroupSeeder.php'),
+                __DIR__.'/../database/seeders/SizeTypeSeeder.php' => database_path('seeders/SizeTypeSeeder.php'),
+                __DIR__.'/../database/seeders/LengthCodeSeeder.php' => database_path('seeders/LengthCodeSeeder.php'),
+                __DIR__.'/../database/seeders/SizeCodeSeeder.php' => database_path('seeders/SizeCodeSeeder.php'),
+                __DIR__.'/../database/seeders/TypeCodeSeeder.php' => database_path('seeders/TypeCodeSeeder.php'),
+                __DIR__.'/../database/seeders/ShicontstandSeeder.php' => database_path('seeders/ShicontstandSeeder.php'),
+            ], 'shicontstand-seeders');
         }
     }
 
@@ -51,6 +57,21 @@ class ShicontstandServiceProvider extends ServiceProvider
         });
 
         $this->mergeConfigFrom(__DIR__.'/../config/shicontstand.php', 'shicontstand');
+    }
+
+    protected function registerRoutes()
+    {
+        Route::group($this->routeConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        });
+    }
+
+    protected function routeConfiguration()
+    {
+        return [
+            'prefix' => config('shicontstand.prefix'),
+            'middleware' => config('shicontstand.middleware'),
+        ];
     }
 
     /**

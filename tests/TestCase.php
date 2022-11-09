@@ -3,11 +3,15 @@
 namespace Laymont\Shicontstand\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Laymont\Shicontstand\Http\Controllers\TypeGroupController;
 use Laymont\Shicontstand\ShicontstandServiceProvider;
-use Orchestra\Testbench\TestCase as Orchestra;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class TestCase extends Orchestra
+
+class TestCase extends \Orchestra\Testbench\TestCase
 {
+    use RefreshDatabase;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -26,11 +30,21 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
+        config()->set('database.default', 'testbench');
+        config()->set('database.connections.testbench', [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ]);
+    }
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_scs_type_groups_table.php.stub';
-        $migration->up();
-        */
+    protected function defineDatabaseMigrations()
+    {
+        $this->loadLaravelMigrations(['--database' => 'testbench']);
+    }
+
+    protected function defineRoutes($router)
+    {
+        $router->get('scs/type_groups/index', [TypeGroupController::class, 'index']);
     }
 }

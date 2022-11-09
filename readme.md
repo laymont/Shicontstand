@@ -104,10 +104,16 @@ php artisan vendor:publis --tag="shicontstand-seeders"
 
 Run seeders
 ``` bash
-php artisan shicontstand:seed
+php artisan db:seed --class=ShicontstandSeeder
 ```
 
+It is recommended to update the routes
+```
+php artisan route:cache
+``` 
+
 ## Usage
+
 
 ```php
 $shicontstand = new Laymont\Shicontstand();

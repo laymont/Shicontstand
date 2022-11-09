@@ -61,4 +61,11 @@ return [
         'size_codes' => 'scs_size_codes',
         'type_codes' => 'scs_type_codes',
     ],
+
+    /**
+     * Route Configuration
+     */
+
+    'prefix' => 'scs',
+    'middleware' => ['web']
 ];

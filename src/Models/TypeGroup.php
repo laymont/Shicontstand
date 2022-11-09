@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class TypeGroup extends Model
 {
-    protected $guarded = [];
+    protected $primaryKey = 'code';
+    protected $keyType = 'string';
+    protected $guarded = ['code'];
+    protected $fillable = ['description'];
 
     public function getTable()
     {
@@ -23,4 +26,9 @@ class TypeGroup extends Model
         'code' => 'string',
         'description' => 'string',
     ];
+
+    public function scopeCode($query, $code)
+    {
+        return $query->find($code);
+    }
 }
