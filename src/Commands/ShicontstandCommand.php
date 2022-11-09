@@ -19,6 +19,7 @@ class ShicontstandCommand extends Command
         $this->info('Run Shicontstand Seeder');
 
         $this->comment('All done');
+
         return self::SUCCESS;
     }
 
