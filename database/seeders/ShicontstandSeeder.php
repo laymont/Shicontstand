@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class ShicontstandSeeder extends Seeder
@@ -17,7 +18,7 @@ class ShicontstandSeeder extends Seeder
             SizeTypeSeeder::class,
             LengthCodeSeeder::class,
             SizeCodeSeeder::class,
-            TypeCodeSeeder::class
+            TypeCodeSeeder::class,
         ]);
     }
 }

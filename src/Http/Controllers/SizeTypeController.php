@@ -4,7 +4,6 @@ namespace Laymont\Shicontstand\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Laymont\Shicontstand\Models\SizeType;
 
 class SizeTypeController extends Controller
 {

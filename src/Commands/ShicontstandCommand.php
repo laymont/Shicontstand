@@ -3,7 +3,6 @@
 namespace Laymont\Shicontstand\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
 
 /**
  * @method callAfterResolving(string $class, \Closure $param)
@@ -22,5 +21,4 @@ class ShicontstandCommand extends Command
 
         return self::SUCCESS;
     }
-
 }

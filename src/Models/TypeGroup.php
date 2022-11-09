@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class TypeGroup extends Model
 {
     protected $primaryKey = 'code';
+
     protected $keyType = 'string';
+
     protected $guarded = ['code'];
+
     protected $fillable = ['description'];
 
     public function getTable()

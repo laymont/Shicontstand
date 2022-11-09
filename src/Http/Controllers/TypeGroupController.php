@@ -23,13 +23,13 @@ class TypeGroupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return JsonResponse
      */
     public function store(Request $request): JsonResponse
     {
         return response()->json([
-            'message' => 'Prohibited Resource'
+            'message' => 'Prohibited Resource',
         ], 403);
     }
 
@@ -42,13 +42,14 @@ class TypeGroupController extends Controller
     public function show($id): JsonResponse
     {
         $typeGroup = TypeGroup::find($id);
+
         return response()->json(new TypeGroupResource($typeGroup), 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param  Request  $request
      * @param  int  $id
      * @return Response
      */
@@ -60,13 +61,13 @@ class TypeGroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      * @return JsonResponse
      */
     public function destroy(int $id): JsonResponse
     {
         return response()->json([
-            'message' => 'Prohibited Resource'
+            'message' => 'Prohibited Resource',
         ], 403);
     }
 }

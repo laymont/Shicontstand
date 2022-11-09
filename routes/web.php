@@ -3,10 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Laymont\Shicontstand\Http\Controllers\ShicontstandController;
 
-
-
-Route::resource('type_group',\Laymont\Shicontstand\Http\Controllers\TypeGroupController::class)
-    ->only(['index','show']);
+Route::resource('type_group', \Laymont\Shicontstand\Http\Controllers\TypeGroupController::class)
+    ->only(['index', 'show']);
 
 //Route::get('get_type_group', [ShicontstandController::class, 'getTypeGroup'])->name('scs.type_group');
 //Route::get('get_size_type', [ShicontstandController::class, 'getSizeType'])->name('scs.size_type');
