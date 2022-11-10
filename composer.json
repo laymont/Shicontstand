@@ -26,8 +26,7 @@
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.5",
-        "phpstan/phpstan": "^1.9",
-        "barryvdh/laravel-ide-helper": "^2.12"
+        "phpstan/phpstan": "^1.9"
     },
     "autoload": {
         "psr-4": {
