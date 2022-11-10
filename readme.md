@@ -163,11 +163,26 @@ now when your model responds it will have a new attribute, called scs
     }
 }
 ```
-1. is_container
-2. owner
-3. category
-4. serial
-5. digit_validations
+## Facade Shicontstand
+**Shicontstand::getTypeGroups();**
+
+**Shicontstand::getTypeGroup($code);**
+
+**Shicontstand::getSizeTypes();**
+
+**Shicontstand::getSizeType($code);**
+
+**Shicontstand::getLengthCodes();**
+
+**Shicontstand::getLengthCode($code);**
+
+**Shicontstand::getSizeCodes();**
+
+**Shicontstand::getSizeCode($code);**
+
+**Shicontstand::getTypeCodes();**
+
+**Shicontstand::getTypeCode($code);**
 
 ## Change log
 
@@ -206,4 +221,4 @@ MIT. Please see the [license file](license.md) for more information.
 [link-travis]: https://travis-ci.org/laymont/shicontstand
 [link-styleci]: https://styleci.io/repos/12345678
 [link-author]: https://github.com/laymont
-[link-contributors]: ../../contributors
+[link-contributors](contributing.md)
