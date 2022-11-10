@@ -13,7 +13,7 @@
 
 declare(strict_types=1);
 
-class Container_0adc2880b1 extends _PHPStan_d91411b2a\Nette\DI\Container
+class Container_0adc2880b1 extends _PHPStan_582a9cb8b\Nette\DI\Container
 {
 	protected $tags = [
 		'phpstan.parser.richParserNodeVisitor' => [
@@ -480,11 +480,11 @@ class Container_0adc2880b1 extends _PHPStan_d91411b2a\Nette\DI\Container
 		'phpstan.typeSpecifier.staticMethodTypeSpecifyingExtension' => ['0434' => true],
 	];
 
-	protected $types = ['container' => '_PHPStan_d91411b2a\Nette\DI\Container'];
+	protected $types = ['container' => '_PHPStan_582a9cb8b\Nette\DI\Container'];
 	protected $aliases = [];
 
 	protected $wiring = [
-		'_PHPStan_d91411b2a\Nette\DI\Container' => [['container']],
+		'_PHPStan_582a9cb8b\Nette\DI\Container' => [['container']],
 		'PHPStan\Rules\Rule' => [
 			[
 				'0105',

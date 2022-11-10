@@ -4,9 +4,6 @@ namespace Laymont\Shicontstand\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * @method static find(string $code)
- */
 class TypeGroup extends Model
 {
     protected $primaryKey = 'code';
