@@ -65,7 +65,6 @@ return [
     /**
      * Route Configuration
      */
-
     'prefix' => 'scs',
-    'middleware' => ['web']
+    'middleware' => ['web'],
 ];

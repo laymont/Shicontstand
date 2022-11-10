@@ -4,14 +4,16 @@ namespace Laymont\Shicontstand;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 
 class ShicontstandServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Perform post-registration booting of services.
+     *
      * @return void
+     *
      * @throws BindingResolutionException
      */
     public function boot(): void
@@ -24,7 +26,6 @@ class ShicontstandServiceProvider extends ServiceProvider implements DeferrableP
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
-
             $this->registerRoutes();
 
             $this->publishes([

@@ -3,10 +3,9 @@
 namespace Laymont\Shicontstand\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laymont\Shicontstand\Http\Controllers\TypeGroupController;
 use Laymont\Shicontstand\ShicontstandServiceProvider;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -32,9 +31,9 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         config()->set('database.default', 'testbench');
         config()->set('database.connections.testbench', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:',
-            'prefix'   => '',
+            'prefix' => '',
         ]);
     }
 
