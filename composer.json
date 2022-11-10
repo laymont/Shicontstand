@@ -4,12 +4,16 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Author Name",
-            "email": "author@email.com"
+            "name": "Laymont Arratia",
+            "email": "Laymont Arratia"
         }
     ],
     "homepage": "https://github.com/laymont/shicontstand",
-    "keywords": ["Laravel", "Shicontstand"],
+    "keywords": [
+        "Laravel",
+        "Shicontstand",
+        "ISO 6346"
+    ],
     "require": {
         "php": "^8.0",
         "illuminate/support": "^9.39",
