@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Database;
+namespace Database\Seeders;
 
 use Laymont\Shicontstand\Models\SizeCode;
 

@@ -2,14 +2,20 @@
 
 namespace Laymont\Shicontstand\Models;
 
-class SizeType extends \Illuminate\Database\Eloquent\Model
+use Illuminate\Database\Eloquent\Model;
+
+class SizeType extends Model
 {
-    protected $guarded = [
-        'id',
-        'type_group_code',
-        'code',
-        'description'
-    ];
+    protected $primaryKey = 'code';
+
+    protected $keyType = 'string';
+
+    protected $guarded = ['code'];
+
+    public function getTable()
+    {
+        return config('shicontstand.tables.size_types');
+    }
 
     protected $dates = [
         'created_at',
@@ -22,4 +28,9 @@ class SizeType extends \Illuminate\Database\Eloquent\Model
         'code' => 'string',
         'description' => 'string',
     ];
+
+    public function typeGroup(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(TypeGroup::class, 'type_group_code', 'code');
+    }
 }

@@ -2,25 +2,46 @@
 
 namespace Laymont\Shicontstand;
 
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Contracts\Support\DeferrableProvider;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
-class ShicontstandServiceProvider extends ServiceProvider
+class ShicontstandServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
      * Perform post-registration booting of services.
      *
      * @return void
+     *
+     * @throws BindingResolutionException
      */
     public function boot(): void
     {
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laymont');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laymont');
-        // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        /*
+         |--------------------------------------------------------------------------
+         | Seed Service Provider need on boot() method
+         |--------------------------------------------------------------------------
+         */
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
-            $this->bootForConsole();
+            $this->registerRoutes();
+
+            $this->publishes([
+                __DIR__.'/../config/shicontstand.php' => config_path('shicontstand.php'),
+            ], 'shicontstand-config');
+
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+            $this->publishes([
+                __DIR__.'/../database/seeders/TypeGroupSeeder.php' => database_path('seeders/TypeGroupSeeder.php'),
+                __DIR__.'/../database/seeders/SizeTypeSeeder.php' => database_path('seeders/SizeTypeSeeder.php'),
+                __DIR__.'/../database/seeders/LengthCodeSeeder.php' => database_path('seeders/LengthCodeSeeder.php'),
+                __DIR__.'/../database/seeders/SizeCodeSeeder.php' => database_path('seeders/SizeCodeSeeder.php'),
+                __DIR__.'/../database/seeders/TypeCodeSeeder.php' => database_path('seeders/TypeCodeSeeder.php'),
+                __DIR__.'/../database/seeders/ShicontstandSeeder.php' => database_path('seeders/ShicontstandSeeder.php'),
+            ], 'shicontstand-seeders');
         }
     }
 
@@ -31,12 +52,27 @@ class ShicontstandServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/shicontstand.php', 'shicontstand');
-
         // Register the service the package provides.
         $this->app->singleton('shicontstand', function ($app) {
             return new Shicontstand;
         });
+
+        $this->mergeConfigFrom(__DIR__.'/../config/shicontstand.php', 'shicontstand');
+    }
+
+    protected function registerRoutes()
+    {
+        Route::group($this->routeConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        });
+    }
+
+    protected function routeConfiguration()
+    {
+        return [
+            'prefix' => config('shicontstand.prefix'),
+            'middleware' => config('shicontstand.middleware'),
+        ];
     }
 
     /**
@@ -44,7 +80,7 @@ class ShicontstandServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return ['shicontstand'];
     }
@@ -56,27 +92,8 @@ class ShicontstandServiceProvider extends ServiceProvider
      */
     protected function bootForConsole(): void
     {
-        // Publishing the configuration file.
         $this->publishes([
             __DIR__.'/../config/shicontstand.php' => config_path('shicontstand.php'),
-        ], 'shicontstand.config');
-
-        // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/laymont'),
-        ], 'shicontstand.views');*/
-
-        // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/laymont'),
-        ], 'shicontstand.views');*/
-
-        // Publishing the translation files.
-        /*$this->publishes([
-            __DIR__.'/../resources/lang' => resource_path('lang/vendor/laymont'),
-        ], 'shicontstand.views');*/
-
-        // Registering package commands.
-        // $this->commands([]);
+        ], 'shicontstand-config');
     }
 }
