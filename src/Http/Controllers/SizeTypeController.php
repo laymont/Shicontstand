@@ -2,8 +2,10 @@
 
 namespace Laymont\Shicontstand\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Laymont\Shicontstand\Http\Resources\SizeTypeResource;
 use Laymont\Shicontstand\Models\SizeType;
 
 class SizeTypeController extends Controller
@@ -11,55 +13,56 @@ class SizeTypeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        return response()->json(SizeTypeResource::collection(SizeType::all()), 200);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
-        //
+        return $this->responseProhibited();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param string $id
+     * @return JsonResponse
      */
-    public function show($id)
+    public function show(string $id): JsonResponse
     {
-        //
+        $sizeType = SizeType::find($id);
+        return response()->json(new SizeTypeResource($sizeType), 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id): JsonResponse
     {
-        //
+        return $this->responseProhibited();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): JsonResponse
     {
-        //
+        return $this->responseProhibited();
     }
 }

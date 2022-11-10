@@ -8,7 +8,7 @@ class TypeGroup extends Model
 {
     protected $primaryKey = 'code';
     protected $keyType = 'string';
-    protected $guarded = ['code'];
+    protected $guarded = ['id', 'code', 'description'];
     protected $fillable = ['description'];
 
     public function getTable()
@@ -26,6 +26,11 @@ class TypeGroup extends Model
         'code' => 'string',
         'description' => 'string',
     ];
+
+    public function sizeTypes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(SizeType::class, 'type_group_code', 'code');
+    }
 
     public function scopeCode($query, $code)
     {

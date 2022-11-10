@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class SizeCode extends Model
 {
-    protected $guarded = [];
+    protected $primaryKey = 'code';
+    protected $keyType = 'string';
+    protected $guarded = ['id', 'code', 'container_height', 'width'];
 
     public function getTable()
     {
@@ -24,4 +26,9 @@ class SizeCode extends Model
         'container_height' => 'string',
         'width' => 'string',
     ];
+
+    public function scopeCode($query, $code)
+    {
+        return $query->find(strtoupper($code));
+    }
 }

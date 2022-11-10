@@ -4,10 +4,11 @@ namespace Laymont\Shicontstand\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Laymont\Shicontstand\Http\Resources\TypeGroupResource;
-use Laymont\Shicontstand\Models\TypeGroup;
+use Illuminate\Http\Response;
+use Laymont\Shicontstand\Http\Resources\TypeCodeResource;
+use Laymont\Shicontstand\Models\TypeCode;
 
-class TypeGroupController extends Controller
+class TypeCodeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,7 @@ class TypeGroupController extends Controller
      */
     public function index(): JsonResponse
     {
-        return response()->json(TypeGroupResource::collection(TypeGroup::all()), 200);
+        return response()->json(TypeCodeResource::collection(TypeCode::all()), 200);
     }
 
     /**
@@ -38,8 +39,8 @@ class TypeGroupController extends Controller
      */
     public function show(string $id): JsonResponse
     {
-        $typeGroup = TypeGroup::find($id);
-        return response()->json(new TypeGroupResource($typeGroup), 200);
+        $typeCode = TypeCode::find($id);
+        return response()->json(new TypeCodeResource($typeCode), 200);
     }
 
     /**
@@ -57,10 +58,10 @@ class TypeGroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param string $id
      * @return JsonResponse
      */
-    public function destroy(int $id): JsonResponse
+    public function destroy(string $id): JsonResponse
     {
         return $this->responseProhibited();
     }

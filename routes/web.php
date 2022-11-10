@@ -1,15 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Laymont\Shicontstand\Http\Controllers\ShicontstandController;
 
-
-
-Route::resource('type_group',\Laymont\Shicontstand\Http\Controllers\TypeGroupController::class)
-    ->only(['index','show']);
-
-//Route::get('get_type_group', [ShicontstandController::class, 'getTypeGroup'])->name('scs.type_group');
-//Route::get('get_size_type', [ShicontstandController::class, 'getSizeType'])->name('scs.size_type');
-//Route::get('get_length_code', [ShicontstandController::class, 'getLengthCode'])->name('scs.length_code');
-//Route::get('get_size_code', [ShicontstandController::class, 'getSizeCode'])->name('scs.size_code');
-//Route::get('get_type_code', [ShicontstandController::class, 'getTypeCode'])->name('scs.type_code');
+Route::resource('type_groups',\Laymont\Shicontstand\Http\Controllers\TypeGroupController::class)->only(['index','show']);
+Route::resource('size_types',\Laymont\Shicontstand\Http\Controllers\SizeTypeController::class)->only(['index','show']);
+Route::resource('length_codes',\Laymont\Shicontstand\Http\Controllers\LengthCodeController::class)->only(['index','show']);
+Route::resource('size_codes',\Laymont\Shicontstand\Http\Controllers\SizeCodeController::class)->only(['index','show']);
+Route::resource('type_codes',\Laymont\Shicontstand\Http\Controllers\TypeCodeController::class)->only(['index','show']);

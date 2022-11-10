@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class SizeType extends Model
 {
-    protected $guarded = [];
+    protected $primaryKey = 'code';
+    protected $keyType = 'string';
+    protected $guarded = ['code'];
 
     public function getTable()
     {
@@ -24,4 +26,9 @@ class SizeType extends Model
         'code' => 'string',
         'description' => 'string',
     ];
+
+    public function typeGroup(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(TypeGroup::class, 'type_group_code', 'code');
+    }
 }
