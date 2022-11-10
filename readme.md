@@ -186,7 +186,7 @@ now when your model responds it will have a new attribute, called scs
 
 ## Change log
 
-Please see the [changelog](changelog.md) for more information on what has changed recently.
+Please see the [changelog](CHANGELOG.md) for more information on what has changed recently.
 
 ## Testing
 
