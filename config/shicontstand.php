@@ -66,8 +66,8 @@ return [
      * Container Model name
      */
     'model' => [
-        'name' => 'containers',
-        'property' => 'number',
+        'container_number' => 'number',
+        'iso_type' => 'iso',
     ],
 
     /**

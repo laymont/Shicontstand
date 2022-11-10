@@ -12,9 +12,10 @@ trait ScsAttributeTrait
     protected static function bootScsAttributeTrait(): void
     {
         self::getClass();
-        $property = config('shicontstand.model.property');
-        static::retrieved(function (Model $model) use ($property) {
-            $model->scs = self::$containerValidation->setNumber($model->{$property});
+        $containerNumber = config('shicontstand.model.container_number');
+        $isoType = config('shicontstand.model.iso_type');
+        static::retrieved(function (Model $model) use ($containerNumber) {
+            $model->scs = self::$containerValidation->setNumber($model->{$containerNumber});
             $model->makeHidden('containerNumber');
         });
     }

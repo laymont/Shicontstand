@@ -5,7 +5,12 @@
 [![Build Status][ico-travis]][link-travis]
 [![StyleCI][ico-styleci]][link-styleci]
 
-This is where your description should go. 
+The purpose of this package is to implement the ISO 6346 standard, which covers the coding, 
+identification and marking of containers, used in intermodal freight transport.
+The standard establishes a visual identification system for every container that includes a 
+unique serial number (with check digit), the owner, a country code, a size, type 
+and equipment category as well as any operational marks.
+
 Take a look at [contributing.md](contributing.md) to see a to do list.
 
 ## Installation
@@ -16,7 +21,7 @@ Via Composer
 composer require laymont/shicontstand
 ```
 
-You can publish the config file with:
+Publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="shicontstand-config"
@@ -24,7 +29,8 @@ php artisan vendor:publish --tag="shicontstand-config"
 
 This is the contents of the published config file:
 
->***you can alter tables name before run migrations., in tables section of next array***
+> 1. ***You can alter tables name before run migrations., in tables section of next array*** 
+> 2. ***Define the name of the property in your model that stores the number of the container, also defines the property that stores the iso code of the container*** 
 
 ```php
 <?php
@@ -106,7 +112,7 @@ return [
 ?>
 ```
 
-You can publish and run the migrations with:
+publish and run the migrations with:
 ``` bash
 php artisan vendor:publis --tag="shicontstand-migrations"
 ```
@@ -121,17 +127,47 @@ Run seeders
 php artisan db:seed --class=ShicontstandSeeder
 ```
 
-It is recommended to update the routes
+It is recommended to update the routes cache
 ```
 php artisan route:cache
 ``` 
 
 ## Usage
-
-
+In your container model add the trait
 ```php
-$shicontstand = new Laymont\Shicontstand();
+use Laymont\Shicontstand\Http\Traits\ScsAttributeTrait;
+
+class Container extends Model
+{
+    use ScsAttributeTrait;
+    ...
+}
 ```
+now when your model responds it will have a new attribute, called scs
+```json
+{
+    "id": 21,
+    "number": "TLLU8328970",
+    "iso_type": null,
+    "created_at": null,
+    "updated_at": null,
+    "scs": {
+        "is_container": true,
+        "owner": "TLL",
+        "category": "U",
+        "serial": "832897",
+        "digit_validations": {
+            "is_valid": true,
+            "digit_validator": 0
+        }
+    }
+}
+```
+1. is_container
+2. owner
+3. category
+4. serial
+5. digit_validations
 
 ## Change log
 
