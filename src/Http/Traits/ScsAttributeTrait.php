@@ -2,8 +2,8 @@
 
 namespace Laymont\Shicontstand\Http\Traits;
 
-use Laymont\Shicontstand\Http\Concerns\ContainerValidation;
 use Illuminate\Database\Eloquent\Model;
+use Laymont\Shicontstand\Http\Concerns\ContainerValidation;
 
 trait ScsAttributeTrait
 {
@@ -24,4 +24,3 @@ trait ScsAttributeTrait
         self::$containerValidation = new ContainerValidation();
     }
 }
-

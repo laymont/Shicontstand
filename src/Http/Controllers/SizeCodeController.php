@@ -33,20 +33,21 @@ class SizeCodeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param string $id
+     * @param  string  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function show(string $id): JsonResponse
     {
         $sizeCode = SizeCode::find($id);
+
         return response()->json(new SizeCodeResource($sizeCode), 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param string $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, string $id): JsonResponse
@@ -57,7 +58,7 @@ class SizeCodeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param string $id
+     * @param  string  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(string $id): JsonResponse

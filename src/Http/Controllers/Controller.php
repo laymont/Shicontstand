@@ -14,7 +14,7 @@ class Controller extends BaseController
     public function responseProhibited(): \Illuminate\Http\JsonResponse
     {
         return response()->json([
-            'message' => 'Prohibited Resource'
+            'message' => 'Prohibited Resource',
         ], 403);
     }
 }

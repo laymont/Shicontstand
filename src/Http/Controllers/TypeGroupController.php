@@ -22,7 +22,7 @@ class TypeGroupController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return JsonResponse
      */
     public function store(Request $request): JsonResponse
@@ -33,20 +33,21 @@ class TypeGroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param string $id
+     * @param  string  $id
      * @return JsonResponse
      */
     public function show(string $id): JsonResponse
     {
         $typeGroup = TypeGroup::find($id);
+
         return response()->json(new TypeGroupResource($typeGroup), 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param string $id
+     * @param  Request  $request
+     * @param  string  $id
      * @return JsonResponse
      */
     public function update(Request $request, string $id): JsonResponse
@@ -57,7 +58,7 @@ class TypeGroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      * @return JsonResponse
      */
     public function destroy(int $id): JsonResponse

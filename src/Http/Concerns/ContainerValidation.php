@@ -3,17 +3,21 @@
 namespace Laymont\Shicontstand\Http\Concerns;
 
 use Illuminate\Support\Arr;
-use JetBrains\PhpStorm\ArrayShape;
-use Illuminate\Database\Eloquent\Model;
 
 class ContainerValidation
 {
     protected string $number;
+
     protected string $owner;
+
     protected string $serial;
+
     protected int $digitValidator;
+
     protected string $pattern = '/([A-Z]{3})(U)([\d]{7})/';
+
     protected mixed $stepOne;
+
     protected mixed $stepTwo;
 
     public function __construct()
@@ -33,7 +37,7 @@ class ContainerValidation
         $collect = collect();
 
         /**character to int */
-        for($i=0; $i<4; $i++){
+        for ($i = 0; $i < 4; $i++) {
             $arr = Arr::first($stepOne, function ($value, $key) use ($i, $serial) {
                 return $value['character'] == $serial[$i];
             });
@@ -42,26 +46,26 @@ class ContainerValidation
         }
 
         /**number of serial */
-        for($i=4; $i<10; $i++) {
+        for ($i = 4; $i < 10; $i++) {
             $collect->push((int) $serial[$i]);
         }
 
         /**Calculate */
         $toCalculate = collect();
-        $serialArr = $collect->toArray();;
-        for($i=0; $i<10; $i++){
+        $serialArr = $collect->toArray();
+        for ($i = 0; $i < 10; $i++) {
             $toCalculate->push($serialArr[$i] * $stepTwo[$i]);
         }
 
-        $sum = $toCalculate->reduce(fn($num, $item) => $num + $item);
-        $division = $sum /11;
+        $sum = $toCalculate->reduce(fn ($num, $item) => $num + $item);
+        $division = $sum / 11;
         $withOutDecimal = (int) $division;
         $multiply = $withOutDecimal * 11;
 
         $digitValidator = $sum - $multiply;
-        if($digitValidator == 10){
+        if ($digitValidator == 10) {
             $digit = 0;
-        }else {
+        } else {
             $digit = $digitValidator;
         }
 
@@ -69,14 +73,14 @@ class ContainerValidation
 
         return [
             'is_valid' => $submittedDigit == $digit,
-            'digit_validator' => $digit
+            'digit_validator' => $digit,
         ];
     }
 
     public function runDecompose(): array
     {
         $number = $this->getNumber();
-        if(preg_match($this->pattern, $number)) {
+        if (preg_match($this->pattern, $number)) {
             $owner = substr($number, 0, 3);
             $category = substr($number, 3, 1);
             $serial = substr($number, 4, 6);
@@ -93,7 +97,7 @@ class ContainerValidation
                 'serial' => $serial,
                 'digit_validations' => $this->runCalculation(),
             ];
-        }else {
+        } else {
             return [
                 'is_container' => false,
                 'owner' => null,
@@ -103,7 +107,6 @@ class ContainerValidation
                 'digit_validations' => false,
             ];
         }
-
     }
 
     /**
@@ -115,12 +118,13 @@ class ContainerValidation
     }
 
     /**
-     * @param string $number
+     * @param  string  $number
      * @return array
      */
     public function setNumber(string $number): array
     {
         $this->number = strtoupper($number);
+
         return $this->runDecompose();
     }
 
@@ -133,7 +137,7 @@ class ContainerValidation
     }
 
     /**
-     * @param string $owner
+     * @param  string  $owner
      */
     public function setOwner(string $owner): void
     {
@@ -149,7 +153,7 @@ class ContainerValidation
     }
 
     /**
-     * @param string $serial
+     * @param  string  $serial
      */
     public function setSerial(string $serial): void
     {
@@ -165,7 +169,7 @@ class ContainerValidation
     }
 
     /**
-     * @param int $digitValidator
+     * @param  int  $digitValidator
      */
     public function setDigitValidator(int $digitValidator): void
     {

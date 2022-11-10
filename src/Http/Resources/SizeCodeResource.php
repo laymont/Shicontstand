@@ -12,7 +12,7 @@ class SizeCodeResource extends \Illuminate\Http\Resources\Json\JsonResource
         return [
             'code' => $this->code,
             'container_height' => $this->container_height,
-            'width' => $this->width
+            'width' => $this->width,
         ];
     }
 }

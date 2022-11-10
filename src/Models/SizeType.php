@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class SizeType extends Model
 {
     protected $primaryKey = 'code';
+
     protected $keyType = 'string';
+
     protected $guarded = ['code'];
 
     public function getTable()
