@@ -13,5 +13,4 @@ class ShicontstandTest extends TestCase
     {
         $this->assertInstanceOf(Shicontstand::class, new Shicontstand);
     }
-
 }

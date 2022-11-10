@@ -4,7 +4,6 @@ namespace Laymont\Shicontstand\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laymont\Shicontstand\Http\Controllers\TypeGroupController;
 use Laymont\Shicontstand\ShicontstandServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -54,6 +53,5 @@ class TestCase extends \Orchestra\Testbench\TestCase
             ->only(['index', 'show']);
         $router->resource('type_codes', \Laymont\Shicontstand\Http\Controllers\TypeCodeController::class)
             ->only(['index', 'show']);
-
     }
 }
