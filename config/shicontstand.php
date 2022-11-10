@@ -63,6 +63,14 @@ return [
     ],
 
     /**
+     * Container Model name
+     */
+    'model' => [
+        'name' => 'containers',
+        'property' => 'number',
+    ],
+
+    /**
      * Route Configuration
      */
     'prefix' => 'scs',

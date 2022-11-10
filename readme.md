@@ -43,32 +43,32 @@ return [
      * beginning with 10 for the letter A (11 and multiples thereof are omitted)
      */
     'calculation_step_one' => [
-        ['A' => 10],
-        ['B' => 12],
-        ['C' => 13],
-        ['D' => 14],
-        ['E' => 15],
-        ['F' => 16],
-        ['G' => 17],
-        ['H' => 18],
-        ['I' => 19],
-        ['J' => 20],
-        ['K' => 21],
-        ['L' => 23],
-        ['M' => 24],
-        ['N' => 25],
-        ['O' => 26],
-        ['P' => 27],
-        ['Q' => 28],
-        ['R' => 29],
-        ['S' => 30],
-        ['T' => 31],
-        ['U' => 32],
-        ['V' => 34],
-        ['W' => 35],
-        ['X' => 36],
-        ['Y' => 37],
-        ['Z' => 38],
+        ['character' => 'A', 'value' => 10],
+        ['character' => 'B', 'value' => 12],
+        ['character' => 'C', 'value' => 13],
+        ['character' => 'D', 'value' => 14],
+        ['character' => 'E', 'value' => 15],
+        ['character' => 'F', 'value' => 16],
+        ['character' => 'G', 'value' => 17],
+        ['character' => 'H', 'value' => 18],
+        ['character' => 'I', 'value' => 19],
+        ['character' => 'J', 'value' => 20],
+        ['character' => 'K', 'value' => 21],
+        ['character' => 'L', 'value' => 23],
+        ['character' => 'M', 'value' => 24],
+        ['character' => 'N', 'value' => 25],
+        ['character' => 'O', 'value' => 26],
+        ['character' => 'P', 'value' => 27],
+        ['character' => 'Q', 'value' => 28],
+        ['character' => 'R', 'value' => 29],
+        ['character' => 'S', 'value' => 30],
+        ['character' => 'T', 'value' => 31],
+        ['character' => 'U', 'value' => 32],
+        ['character' => 'V', 'value' => 34],
+        ['character' => 'W', 'value' => 35],
+        ['character' => 'X', 'value' => 36],
+        ['character' => 'Y', 'value' => 37],
+        ['character' => 'Z', 'value' => 38],
     ],
 
     /**
@@ -88,6 +88,20 @@ return [
         'size_codes' => 'scs_size_codes',
         'type_codes' => 'scs_type_codes',
     ],
+
+    /**
+     * Container Model name
+     */
+    'model' => [
+        'name' => 'containers',
+        'property' => 'number',
+    ],
+
+    /**
+     * Route Configuration
+     */
+    'prefix' => 'scs',
+    'middleware' => ['web'],
 ];
 ?>
 ```
