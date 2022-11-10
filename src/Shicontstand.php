@@ -17,14 +17,23 @@ use Laymont\Shicontstand\Models\TypeGroup;
 class Shicontstand
 {
     protected AnonymousResourceCollection $typeGroups;
+
     protected TypeGroupResource $typeGroup;
+
     protected AnonymousResourceCollection $sizeTypes;
+
     protected SizeTypeResource $sizeType;
+
     protected AnonymousResourceCollection $lengthCodes;
+
     protected LengthCodeResource $lengthCode;
+
     protected AnonymousResourceCollection $sizeCodes;
+
     protected SizeCodeResource $sizeCode;
+
     protected AnonymousResourceCollection $typeCodes;
+
     protected TypeCodeResource $typeCode;
 
     public function getTypeGroups(): AnonymousResourceCollection
@@ -35,6 +44,7 @@ class Shicontstand
     public function getTypeGroup(string $code): TypeGroupResource
     {
         $typeGroup = TypeGroup::find($code);
+
         return new TypeGroupResource($typeGroup);
     }
 
@@ -46,6 +56,7 @@ class Shicontstand
     public function getSizeType(string $code): SizeTypeResource
     {
         $sizeType = SizeType::find($code);
+
         return new SizeTypeResource($sizeType);
     }
 
@@ -57,6 +68,7 @@ class Shicontstand
     public function getLengthCode(string $code): LengthCodeResource
     {
         $lengthCode = LengthCode::find($code);
+
         return new LengthCodeResource($lengthCode);
     }
 
@@ -68,6 +80,7 @@ class Shicontstand
     public function getSizeCode(string $code): SizeCodeResource
     {
         $sizeCode = SizeCode::find($code);
+
         return new SizeCodeResource($sizeCode);
     }
 
@@ -79,6 +92,7 @@ class Shicontstand
     public function getTypeCode(string $code): TypeCodeResource
     {
         $typeCode = TypeCode::find($code);
+
         return new TypeCodeResource($typeCode);
     }
 }

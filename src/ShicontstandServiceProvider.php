@@ -2,7 +2,6 @@
 
 namespace Laymont\Shicontstand;
 
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -13,7 +12,6 @@ class ShicontstandServiceProvider extends ServiceProvider implements DeferrableP
      * Perform post-registration booting of services.
      *
      * @return void
-     *
      */
     public function boot(): void
     {
