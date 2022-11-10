@@ -39,7 +39,6 @@ class LengthCodeController extends Controller
     public function show(string $id): JsonResponse
     {
         $lengthCode = LengthCode::find($id);
-
         return response()->json(new LengthCodeResource($lengthCode), 200);
     }
 

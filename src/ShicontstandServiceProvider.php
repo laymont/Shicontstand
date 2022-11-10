@@ -14,15 +14,12 @@ class ShicontstandServiceProvider extends ServiceProvider implements DeferrableP
      *
      * @return void
      *
-     * @throws BindingResolutionException
      */
     public function boot(): void
     {
-        /*
-         |--------------------------------------------------------------------------
-         | Seed Service Provider need on boot() method
-         |--------------------------------------------------------------------------
-         */
+        $this->app->bind('Shicontstand', function ($app) {
+            return new Shicontstand();
+        });
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {

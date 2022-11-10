@@ -39,7 +39,6 @@ class TypeCodeController extends Controller
     public function show(string $id): JsonResponse
     {
         $typeCode = TypeCode::find($id);
-
         return response()->json(new TypeCodeResource($typeCode), 200);
     }
 

@@ -39,7 +39,6 @@ class SizeCodeController extends Controller
     public function show(string $id): JsonResponse
     {
         $sizeCode = SizeCode::find($id);
-
         return response()->json(new SizeCodeResource($sizeCode), 200);
     }
 

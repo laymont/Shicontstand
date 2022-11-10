@@ -1,3 +1,0 @@
-- name: Changelog Updater
-  uses: stefanzweifel/changelog-updater-action@v1.6.2
-
