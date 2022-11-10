@@ -2,7 +2,7 @@
 
 namespace Laymont\Shicontstand;
 
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\JsonResponse;
 use Laymont\Shicontstand\Http\Resources\LengthCodeResource;
 use Laymont\Shicontstand\Http\Resources\SizeCodeResource;
 use Laymont\Shicontstand\Http\Resources\SizeTypeResource;
@@ -16,83 +16,83 @@ use Laymont\Shicontstand\Models\TypeGroup;
 
 class Shicontstand
 {
-    protected AnonymousResourceCollection $typeGroups;
+    protected JsonResponse $typeGroups;
 
-    protected TypeGroupResource $typeGroup;
+    protected JsonResponse $typeGroup;
 
-    protected AnonymousResourceCollection $sizeTypes;
+    protected JsonResponse $sizeTypes;
 
-    protected SizeTypeResource $sizeType;
+    protected JsonResponse $sizeType;
 
-    protected AnonymousResourceCollection $lengthCodes;
+    protected JsonResponse $lengthCodes;
 
-    protected LengthCodeResource $lengthCode;
+    protected JsonResponse $lengthCode;
 
-    protected AnonymousResourceCollection $sizeCodes;
+    protected JsonResponse $sizeCodes;
 
-    protected SizeCodeResource $sizeCode;
+    protected JsonResponse $sizeCode;
 
-    protected AnonymousResourceCollection $typeCodes;
+    protected JsonResponse $typeCodes;
 
-    protected TypeCodeResource $typeCode;
+    protected JsonResponse $typeCode;
 
-    public function getTypeGroups(): AnonymousResourceCollection
+    public function getTypeGroups(): JsonResponse
     {
-        return TypeGroupResource::collection(TypeGroup::all());
+        return response()->json(TypeGroupResource::collection(TypeGroup::all()), 200);
     }
 
-    public function getTypeGroup(string $code): TypeGroupResource
+    public function getTypeGroup(string $code): JsonResponse
     {
         $typeGroup = TypeGroup::find($code);
 
-        return new TypeGroupResource($typeGroup);
+        return response()->json(new TypeGroupResource($typeGroup), 200);
     }
 
-    public function getSizeTypes(): AnonymousResourceCollection
+    public function getSizeTypes(): JsonResponse
     {
-        return SizeTypeResource::collection(SizeType::all());
+        return response()->json(SizeTypeResource::collection(SizeType::all()), 200);
     }
 
-    public function getSizeType(string $code): SizeTypeResource
+    public function getSizeType(string $code): JsonResponse
     {
         $sizeType = SizeType::find($code);
 
-        return new SizeTypeResource($sizeType);
+        return response()->json(new SizeTypeResource($sizeType), 200);
     }
 
-    public function getLengthCodes(): AnonymousResourceCollection
+    public function getLengthCodes(): JsonResponse
     {
-        return LengthCodeResource::collection(LengthCode::all());
+        return response()->json(LengthCodeResource::collection(LengthCode::all()), 200);
     }
 
-    public function getLengthCode(string $code): LengthCodeResource
+    public function getLengthCode(string $code): JsonResponse
     {
         $lengthCode = LengthCode::find($code);
 
-        return new LengthCodeResource($lengthCode);
+        return response()->json(new LengthCodeResource($lengthCode), 200);
     }
 
-    public function getSizeCodes(): AnonymousResourceCollection
+    public function getSizeCodes(): JsonResponse
     {
-        return SizeCodeResource::collection(SizeCode::all());
+        return response()->json(SizeCodeResource::collection(SizeCode::all()), 200);
     }
 
-    public function getSizeCode(string $code): SizeCodeResource
+    public function getSizeCode(string $code): JsonResponse
     {
         $sizeCode = SizeCode::find($code);
 
-        return new SizeCodeResource($sizeCode);
+        return response()->json(new SizeCodeResource($sizeCode), 200);
     }
 
-    public function getTypeCodes(): AnonymousResourceCollection
+    public function getTypeCodes(): JsonResponse
     {
-        return TypeCodeResource::collection(TypeCode::all());
+        return response()->json(TypeCodeResource::collection(TypeCode::all()), 200);
     }
 
-    public function getTypeCode(string $code): TypeCodeResource
+    public function getTypeCode(string $code): JsonResponse
     {
         $typeCode = TypeCode::find($code);
 
-        return new TypeCodeResource($typeCode);
+        return response()->json(new TypeCodeResource($typeCode), 200);
     }
 }
