@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class SizeCode extends Model
 {
     protected $primaryKey = 'code';
+
     protected $keyType = 'string';
+
     protected $guarded = ['id', 'code', 'container_height', 'width'];
 
     public function getTable()

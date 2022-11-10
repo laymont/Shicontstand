@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class LengthCode extends Model
 {
     protected $primaryKey = 'code';
+
     protected $keyType = 'string';
+
     protected $guarded = ['id', 'code', 'container_length'];
 
     public function getTable()

@@ -16,7 +16,7 @@ class TypeGroupResource extends JsonResource
             'size_types' => $this->when(
                 $request->routeIs('type_groups.show'),
                 SizeTypeResource::collection($this->sizeTypes)
-            )
+            ),
         ];
     }
 }

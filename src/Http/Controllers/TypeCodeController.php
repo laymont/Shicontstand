@@ -4,7 +4,6 @@ namespace Laymont\Shicontstand\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Laymont\Shicontstand\Http\Resources\TypeCodeResource;
 use Laymont\Shicontstand\Models\TypeCode;
 
@@ -23,7 +22,7 @@ class TypeCodeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return JsonResponse
      */
     public function store(Request $request): JsonResponse
@@ -34,20 +33,21 @@ class TypeCodeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param string $id
+     * @param  string  $id
      * @return JsonResponse
      */
     public function show(string $id): JsonResponse
     {
         $typeCode = TypeCode::find($id);
+
         return response()->json(new TypeCodeResource($typeCode), 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param string $id
+     * @param  Request  $request
+     * @param  string  $id
      * @return JsonResponse
      */
     public function update(Request $request, string $id): JsonResponse
@@ -58,7 +58,7 @@ class TypeCodeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param string $id
+     * @param  string  $id
      * @return JsonResponse
      */
     public function destroy(string $id): JsonResponse

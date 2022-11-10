@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class TypeCode extends Model
 {
     protected $primaryKey = 'code';
+
     protected $keyType = 'string';
+
     protected $guarded = ['id', 'code', 'description'];
 
     public function getTable()

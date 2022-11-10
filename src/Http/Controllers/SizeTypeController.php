@@ -4,7 +4,6 @@ namespace Laymont\Shicontstand\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Laymont\Shicontstand\Http\Resources\SizeTypeResource;
 use Laymont\Shicontstand\Models\SizeType;
 
@@ -23,7 +22,7 @@ class SizeTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return JsonResponse
      */
     public function store(Request $request): JsonResponse
@@ -34,20 +33,21 @@ class SizeTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param string $id
+     * @param  string  $id
      * @return JsonResponse
      */
     public function show(string $id): JsonResponse
     {
         $sizeType = SizeType::find($id);
+
         return response()->json(new SizeTypeResource($sizeType), 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
-     * @param int $id
+     * @param  Request  $request
+     * @param  int  $id
      * @return JsonResponse
      */
     public function update(Request $request, int $id): JsonResponse
@@ -58,7 +58,7 @@ class SizeTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      * @return JsonResponse
      */
     public function destroy(int $id): JsonResponse
