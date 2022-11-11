@@ -1,9 +1,11 @@
 # Shicontstand
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
+<a href="https://packagist.org/packages/laymont/shicontstand" rel="nofollow noindex noopener external ugc"><img src="https://camo.githubusercontent.com/56b8853f759e8560a5776a8c3dec9c76a9a9af70a11db610f77f4ae5e44f215c/68747470733a2f2f696d672e736869656c64732e696f2f7061636b61676973742f762f6c61796d6f6e742f736869636f6e747374616e642e7376673f7374796c653d666c61742d737175617265" alt="Latest Version on Packagist"></a>
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Build Status][ico-travis]][link-travis]
 [![StyleCI][ico-styleci]][link-styleci]
+
+
 
 The purpose of this package is to implement the ISO 6346 standard, which covers the coding, 
 identification and marking of containers, used in intermodal freight transport.
