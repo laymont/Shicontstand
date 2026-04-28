@@ -3,13 +3,14 @@
 namespace Laymont\Shicontstand\Http\Resources;
 
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
 
 /**
  * @property mixed $code
  * @property mixed $description
  */
-class TypeCodeResource extends \Illuminate\Http\Resources\Json\JsonResource
+class TypeCodeResource extends JsonResource
 {
     public function toArray($request): array|JsonSerializable|Arrayable
     {

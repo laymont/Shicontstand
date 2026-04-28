@@ -2,7 +2,9 @@
 
 namespace Laymont\Shicontstand;
 
-class ShicontstandFacade extends \Illuminate\Support\Facades\Facade
+use Illuminate\Support\Facades\Facade;
+
+class ShicontstandFacade extends Facade
 {
     protected static function getFacadeAccessor(): string
     {

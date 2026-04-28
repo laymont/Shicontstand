@@ -4,6 +4,11 @@ namespace Laymont\Shicontstand\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laymont\Shicontstand\Http\Controllers\LengthCodeController;
+use Laymont\Shicontstand\Http\Controllers\SizeCodeController;
+use Laymont\Shicontstand\Http\Controllers\SizeTypeController;
+use Laymont\Shicontstand\Http\Controllers\TypeCodeController;
+use Laymont\Shicontstand\Http\Controllers\TypeGroupController;
 use Laymont\Shicontstand\ShicontstandServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
@@ -38,20 +43,20 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     protected function defineDatabaseMigrations()
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 
     protected function defineRoutes($router)
     {
-        $router->resource('type_groups', \Laymont\Shicontstand\Http\Controllers\TypeGroupController::class)
+        $router->resource('type_groups', TypeGroupController::class)
             ->only(['index', 'show']);
-        $router->resource('size_types', \Laymont\Shicontstand\Http\Controllers\SizeTypeController::class)
+        $router->resource('size_types', SizeTypeController::class)
             ->only(['index', 'show']);
-        $router->resource('length_codes', \Laymont\Shicontstand\Http\Controllers\LengthCodeController::class)
+        $router->resource('length_codes', LengthCodeController::class)
             ->only(['index', 'show']);
-        $router->resource('size_codes', \Laymont\Shicontstand\Http\Controllers\SizeCodeController::class)
+        $router->resource('size_codes', SizeCodeController::class)
             ->only(['index', 'show']);
-        $router->resource('type_codes', \Laymont\Shicontstand\Http\Controllers\TypeCodeController::class)
+        $router->resource('type_codes', TypeCodeController::class)
             ->only(['index', 'show']);
     }
 }

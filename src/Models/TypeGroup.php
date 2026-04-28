@@ -3,6 +3,7 @@
 namespace Laymont\Shicontstand\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TypeGroup extends Model
 {
@@ -30,7 +31,7 @@ class TypeGroup extends Model
         'description' => 'string',
     ];
 
-    public function sizeTypes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function sizeTypes(): HasMany
     {
         return $this->hasMany(SizeType::class, 'type_group_code', 'code');
     }

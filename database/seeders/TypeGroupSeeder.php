@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
 use Laymont\Shicontstand\Models\TypeGroup;
 
-class TypeGroupSeeder extends \Illuminate\Database\Seeder
+class TypeGroupSeeder extends Seeder
 {
     public function run()
     {

@@ -3,6 +3,7 @@
 namespace Laymont\Shicontstand\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SizeType extends Model
 {
@@ -29,7 +30,7 @@ class SizeType extends Model
         'description' => 'string',
     ];
 
-    public function typeGroup(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function typeGroup(): BelongsTo
     {
         return $this->belongsTo(TypeGroup::class, 'type_group_code', 'code');
     }

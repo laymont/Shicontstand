@@ -3,11 +3,13 @@
 namespace Laymont\Shicontstand\Contracts;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 interface RepositoryInterface
 {
-    public function all(): \Illuminate\Database\Eloquent\Collection;
+    public function all(): Collection;
 
     public function find(int|string $id): ?Model;
 
@@ -21,5 +23,5 @@ interface RepositoryInterface
 
     public function delete(int|string $id): bool;
 
-    public function query(): \Illuminate\Database\Eloquent\Builder;
+    public function query(): Builder;
 }
