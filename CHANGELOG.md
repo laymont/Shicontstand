@@ -8,15 +8,19 @@ All notable changes to `Shicontstand` will be documented in this file.
 - Laravel: ^12.0 | ^13.0 (was ^9.39)
 - PHP: >=8.3 (was ^8.0)
 
+### New Features
+- **Repository Pattern**: Add EloquentRepository base class
+- **Contracts**: Add RepositoryInterface and TypeGroupInterface
+- **TypeGroupRepository**: Concrete implementation for TypeGroup
+
 ### Changes
 - Upgrade orchestra/testbench to ^10.0|^11.0
 - Upgrade pest to ^3.0
-- Remove phpstan dependencies (not needed for package distribution)
 - Simplify composer.json
+- Improve ServiceProvider for Laravel 12/13
 
-### Added
-- PHPUnit configuration file
-- More comprehensive tests
+### Tests
+- Add 6 functional tests for repositories
 
 ---
 

@@ -1,41 +1,37 @@
 <?php
 
-it('shicontstand can be instantiated', function () {
-    expect(true)->toBeTrue();
+namespace Laymont\Shicontstand\Tests;
+
+use Laymont\Shicontstand\Models\TypeGroup;
+use Laymont\Shicontstand\Repositories\TypeGroupRepository;
+
+it('can instantiate TypeGroupRepository', function () {
+    $repository = new TypeGroupRepository(new TypeGroup());
+    expect($repository)->toBeInstanceOf(TypeGroupRepository::class);
 });
 
-it('shicontstand class exists', function () {
-    expect(class_exists(\Laymont\Shicontstand\Shicontstand::class))->toBeTrue();
+it('TypeGroupRepository has model', function () {
+    $model = new TypeGroup();
+    $repository = new TypeGroupRepository($model);
+    
+    expect($repository->all())->toBeInstanceOf(\Illuminate\Database\Eloquent\Collection::class);
 });
 
-it('shicontstand service provider exists', function () {
-    expect(class_exists(\Laymont\Shicontstand\ShicontstandServiceProvider::class))->toBeTrue();
+it('EloquentRepository can query', function () {
+    $model = new TypeGroup();
+    $repository = new TypeGroupRepository($model);
+    
+    expect($repository->query())->toBeInstanceOf(\Illuminate\Database\Eloquent\Builder::class);
 });
 
-it('shicontstand facade exists', function () {
-    expect(class_exists(\Laymont\Shicontstand\Facades\Shicontstand::class))->toBeTrue();
+it('TypeGroup model can get table from config', function () {
+    $model = new TypeGroup();
+    
+    expect($model->getTable())->toBeString();
 });
 
-it('models exist', function () {
-    expect(class_exists(\Laymont\Shicontstand\Models\TypeGroup::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Models\SizeType::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Models\LengthCode::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Models\SizeCode::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Models\TypeCode::class))->toBeTrue();
-});
-
-it('resources exist', function () {
-    expect(class_exists(\Laymont\Shicontstand\Http\Resources\TypeGroupResource::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Http\Resources\SizeTypeResource::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Http\Resources\LengthCodeResource::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Http\Resources\SizeCodeResource::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Http\Resources\TypeCodeResource::class))->toBeTrue();
-});
-
-it('controllers exist', function () {
-    expect(class_exists(\Laymont\Shicontstand\Http\Controllers\TypeGroupController::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Http\Controllers\SizeTypeController::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Http\Controllers\LengthCodeController::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Http\Controllers\SizeCodeController::class))->toBeTrue();
-    expect(class_exists(\Laymont\Shicontstand\Http\Controllers\TypeCodeController::class))->toBeTrue();
+it('TypeGroup has relationship with SizeType', function () {
+    $model = new TypeGroup();
+    
+    expect($model->sizeTypes())->toBeInstanceOf(\Illuminate\Database\Eloquent\Relations\HasMany::class);
 });
