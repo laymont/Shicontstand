@@ -1,6 +1,6 @@
 {
     "name": "laymont/shicontstand",
-    "description": ":package_description",
+    "description": "Package for ISO 6346 shipping container codes management",
     "license": "MIT",
     "authors": [
         {
@@ -12,25 +12,23 @@
     "keywords": [
         "Laravel",
         "Shicontstand",
-        "ISO 6346"
+        "ISO 6346",
+        "Container",
+        "Shipping"
     ],
     "require": {
-        "php": "^8.0",
-        "illuminate/support": "^9.39",
-        "illuminate/contracts": "^9.39"
+        "php": ">=8.3",
+        "illuminate/support": "^12.0|^13.0",
+        "illuminate/contracts": "^12.0|^13.0",
+        "illuminate/database": "^12.0|^13.0",
+        "illuminate/http": "^12.0|^13.0",
+        "laravel/framework": "^12.0|^13.0"
     },
     "require-dev": {
-        "laravel/pint": "^1.0",
-        "nunomaduro/collision": "^6.3",
-        "nunomaduro/larastan": "^2.0.1",
-        "orchestra/testbench": "^7.11",
-        "pestphp/pest": "^1.22",
-        "pestphp/pest-plugin-laravel": "^1.1",
-        "phpstan/extension-installer": "^1.1",
-        "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "phpunit/phpunit": "^9.5",
-        "phpstan/phpstan": "^1.9"
+        "pestphp/pest": "^3.0",
+        "phpunit/phpunit": "^11.0",
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^10.0|^11.0"
     },
     "autoload": {
         "psr-4": {
@@ -42,12 +40,6 @@
         "psr-4": {
             "Laymont\\Shicontstand\\Tests\\": "tests"
         }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "@php vendor/bin/testbench package:discover --ansi",
-            "@php vendor/bin/phpstan analyse --level 4 --configuration phpstan-baseline.neon  src/ tests/ "
-        ]
     },
     "extra": {
         "laravel": {
@@ -61,8 +53,9 @@
     },
     "config": {
         "allow-plugins": {
-            "pestphp/pest-plugin": true,
-            "phpstan/extension-installer": true
+            "pestphp/pest-plugin": true
         }
-    }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }

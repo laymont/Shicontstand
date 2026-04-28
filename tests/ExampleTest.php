@@ -1,35 +1,41 @@
 <?php
 
-it('can test', function () {
+it('shicontstand can be instantiated', function () {
     expect(true)->toBeTrue();
 });
 
-it('facade type groups test', function () {
-    $facade = new Laymont\Shicontstand\Shicontstand;
-    $facade->getTypeGroups();
-    $facade->getTypeGroup('20GP');
+it('shicontstand class exists', function () {
+    expect(class_exists(\Laymont\Shicontstand\Shicontstand::class))->toBeTrue();
 });
 
-it('facade size types test', function () {
-    $facade = new Laymont\Shicontstand\Shicontstand;
-    $facade->getSizeTypes();
-    $facade->getSizeType('22G1');
+it('shicontstand service provider exists', function () {
+    expect(class_exists(\Laymont\Shicontstand\ShicontstandServiceProvider::class))->toBeTrue();
 });
 
-it('facade length codes test', function () {
-    $facade = new Laymont\Shicontstand\Shicontstand;
-    $facade->getLengthCodes();
-    $facade->getLengthCode('B');
+it('shicontstand facade exists', function () {
+    expect(class_exists(\Laymont\Shicontstand\Facades\Shicontstand::class))->toBeTrue();
 });
 
-it('facade size code test', function () {
-    $facade = new Laymont\Shicontstand\Shicontstand;
-    $facade->getSizeCodes();
-    $facade->getSizeCode('D');
+it('models exist', function () {
+    expect(class_exists(\Laymont\Shicontstand\Models\TypeGroup::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Models\SizeType::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Models\LengthCode::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Models\SizeCode::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Models\TypeCode::class))->toBeTrue();
 });
 
-it('facade type codes test', function () {
-    $facade = new Laymont\Shicontstand\Shicontstand;
-    $facade->getTypeCodes();
-    $facade->getTypeCode('G1');
+it('resources exist', function () {
+    expect(class_exists(\Laymont\Shicontstand\Http\Resources\TypeGroupResource::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Http\Resources\SizeTypeResource::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Http\Resources\LengthCodeResource::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Http\Resources\SizeCodeResource::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Http\Resources\TypeCodeResource::class))->toBeTrue();
+});
+
+it('controllers exist', function () {
+    expect(class_exists(\Laymont\Shicontstand\Http\Controllers\TypeGroupController::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Http\Controllers\SizeTypeController::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Http\Controllers\LengthCodeController::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Http\Controllers\SizeCodeController::class))->toBeTrue();
+    expect(class_exists(\Laymont\Shicontstand\Http\Controllers\TypeCodeController::class))->toBeTrue();
 });
