@@ -11,8 +11,6 @@ class TypeGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return JsonResponse
      */
     public function index(): JsonResponse
     {
@@ -21,9 +19,6 @@ class TypeGroupController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  Request  $request
-     * @return JsonResponse
      */
     public function store(Request $request): JsonResponse
     {
@@ -32,9 +27,6 @@ class TypeGroupController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  string  $id
-     * @return JsonResponse
      */
     public function show(string $id): JsonResponse
     {
@@ -45,10 +37,6 @@ class TypeGroupController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  Request  $request
-     * @param  string  $id
-     * @return JsonResponse
      */
     public function update(Request $request, string $id): JsonResponse
     {
@@ -57,9 +45,6 @@ class TypeGroupController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return JsonResponse
      */
     public function destroy(int $id): JsonResponse
     {

@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
 use Laymont\Shicontstand\Models\SizeType;
 
-class SizeTypeSeeder extends \Illuminate\Database\Seeder
+class SizeTypeSeeder extends Seeder
 {
     public function run()
     {

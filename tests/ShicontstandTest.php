@@ -9,7 +9,7 @@ class ShicontstandTest extends TestCase
 {
     protected Shicontstand $shicontstand;
 
-    public function testFacade()
+    public function test_facade()
     {
         $this->assertInstanceOf(Shicontstand::class, new Shicontstand);
     }

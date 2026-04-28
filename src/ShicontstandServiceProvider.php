@@ -2,32 +2,39 @@
 
 namespace Laymont\Shicontstand;
 
-use Illuminate\Contracts\Support\DeferrableProvider;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Laymont\Shicontstand\Repositories\TypeGroupRepository;
 
-class ShicontstandServiceProvider extends ServiceProvider implements DeferrableProvider
+class ShicontstandServiceProvider extends ServiceProvider
 {
-    /**
-     * Perform post-registration booting of services.
-     *
-     * @return void
-     */
-    public function boot(): void
+    public function register(): void
     {
-        $this->app->bind('Shicontstand', function ($app) {
-            return new Shicontstand();
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/shicontstand.php',
+            'shicontstand'
+        );
+
+        $this->app->singleton(TypeGroupRepository::class, function ($app) {
+            return new TypeGroupRepository(
+                new Models\TypeGroup
+            );
         });
 
-        // Publishing is only necessary when using the CLI.
+        $this->app->singleton('shicontstand', function ($app) {
+            return new Shicontstand;
+        });
+    }
+
+    public function boot(): void
+    {
+        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+
         if ($this->app->runningInConsole()) {
-            $this->registerRoutes();
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
             $this->publishes([
                 __DIR__.'/../config/shicontstand.php' => config_path('shicontstand.php'),
             ], 'shicontstand-config');
-
-            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
             $this->publishes([
                 __DIR__.'/../database/seeders/TypeGroupSeeder.php' => database_path('seeders/TypeGroupSeeder.php'),
@@ -35,60 +42,7 @@ class ShicontstandServiceProvider extends ServiceProvider implements DeferrableP
                 __DIR__.'/../database/seeders/LengthCodeSeeder.php' => database_path('seeders/LengthCodeSeeder.php'),
                 __DIR__.'/../database/seeders/SizeCodeSeeder.php' => database_path('seeders/SizeCodeSeeder.php'),
                 __DIR__.'/../database/seeders/TypeCodeSeeder.php' => database_path('seeders/TypeCodeSeeder.php'),
-                __DIR__.'/../database/seeders/ShicontstandSeeder.php' => database_path('seeders/ShicontstandSeeder.php'),
             ], 'shicontstand-seeders');
         }
-    }
-
-    /**
-     * Register any package services.
-     *
-     * @return void
-     */
-    public function register(): void
-    {
-        // Register the service the package provides.
-        $this->app->singleton('shicontstand', function ($app) {
-            return new Shicontstand;
-        });
-
-        $this->mergeConfigFrom(__DIR__.'/../config/shicontstand.php', 'shicontstand');
-    }
-
-    protected function registerRoutes()
-    {
-        Route::group($this->routeConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
-        });
-    }
-
-    protected function routeConfiguration()
-    {
-        return [
-            'prefix' => config('shicontstand.prefix'),
-            'middleware' => config('shicontstand.middleware'),
-        ];
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides(): array
-    {
-        return ['shicontstand'];
-    }
-
-    /**
-     * Console-specific booting.
-     *
-     * @return void
-     */
-    protected function bootForConsole(): void
-    {
-        $this->publishes([
-            __DIR__.'/../config/shicontstand.php' => config_path('shicontstand.php'),
-        ], 'shicontstand-config');
     }
 }

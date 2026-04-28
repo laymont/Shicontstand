@@ -10,8 +10,6 @@ trait PublishesSeeders
     /**
      * Searches migrations and publishes them as assets.
      *
-     * @param  string  $directory
-     * @return void
      *
      * @throws BindingResolutionException
      */

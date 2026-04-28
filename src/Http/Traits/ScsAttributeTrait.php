@@ -22,6 +22,6 @@ trait ScsAttributeTrait
 
     protected static function getClass(): void
     {
-        self::$containerValidation = new ContainerValidation();
+        self::$containerValidation = new ContainerValidation;
     }
 }

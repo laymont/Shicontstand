@@ -109,18 +109,11 @@ class ContainerValidation
         }
     }
 
-    /**
-     * @return string
-     */
     public function getNumber(): string
     {
         return $this->number;
     }
 
-    /**
-     * @param  string  $number
-     * @return array
-     */
     public function setNumber(string $number): array
     {
         $this->number = strtoupper($number);
@@ -128,49 +121,31 @@ class ContainerValidation
         return $this->runDecompose();
     }
 
-    /**
-     * @return string
-     */
     public function getOwner(): string
     {
         return $this->owner;
     }
 
-    /**
-     * @param  string  $owner
-     */
     public function setOwner(string $owner): void
     {
         $this->owner = $owner;
     }
 
-    /**
-     * @return string
-     */
     public function getSerial(): string
     {
         return $this->serial;
     }
 
-    /**
-     * @param  string  $serial
-     */
     public function setSerial(string $serial): void
     {
         $this->serial = $serial;
     }
 
-    /**
-     * @return int
-     */
     public function getDigitValidator(): int
     {
         return $this->digitValidator;
     }
 
-    /**
-     * @param  int  $digitValidator
-     */
     public function setDigitValidator(int $digitValidator): void
     {
         $this->digitValidator = $digitValidator;

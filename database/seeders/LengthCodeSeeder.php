@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
 use Laymont\Shicontstand\Models\LengthCode;
 
-class LengthCodeSeeder extends \Illuminate\Database\Seeder
+class LengthCodeSeeder extends Seeder
 {
     public function run()
     {
