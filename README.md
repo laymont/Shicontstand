@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/laymont/shicontstand.svg?style=flat-square)](https://packagist.org/packages/laymont/shicontstand)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Package for ISO 6346 shipping container codes management. This package provides models, controllers, and resources for managing shipping container codes based on the ISO 6346 standard.
+Package for ISO 6346 shipping container codes management. This package provides models, controllers, repositories, and resources for managing shipping container codes based on the ISO 6346 standard.
 
 ## Compatibility
 
@@ -15,6 +15,19 @@ Package for ISO 6346 shipping container codes management. This package provides 
 
 ```bash
 composer require laymont/shicontstand
+```
+
+## Quick Start
+
+1. Publish and run migrations:
+```bash
+php artisan vendor:publish --tag="shicontstand-migrations"
+php artisan migrate
+```
+
+2. Seed data:
+```bash
+php artisan db:seed --class=ShicontstandSeeder
 ```
 
 ## Usage
@@ -28,6 +41,26 @@ The package includes 5 models for container codes:
 - `LengthCode` - Length codes (L, M, E)
 - `SizeCode` - Size codes (2, G, L)
 - `TypeCode` - Type codes (G1, R1, etc.)
+
+### Repository Pattern
+
+Use the repository for better testability and separation of concerns:
+
+```php
+use Laymont\Shicontstand\Repositories\TypeGroupRepository;
+use Laymont\Shicontstand\Models\TypeGroup;
+
+$repository = new TypeGroupRepository(new TypeGroup());
+
+// Get all
+$groups = $repository->all();
+
+// Get by code
+$group = $repository->find('22G1');
+
+// Query builder
+$groups = $repository->query()->where('code', 'like', '2%')->get();
+```
 
 ### Controllers / API Endpoints
 
@@ -85,24 +118,6 @@ Publish config:
 php artisan vendor:publish --tag="shicontstand-config"
 ```
 
-Publish migrations:
-
-```bash
-php artisan vendor:publish --tag="shicontstand-migrations"
-```
-
-Run migrations:
-
-```bash
-php artisan migrate
-```
-
-Seed data:
-
-```bash
-php artisan db:seed --class=ShicontstandSeeder
-```
-
 ## Container Model Trait
 
 Use the trait in your container model:
@@ -124,6 +139,33 @@ This adds ISO 6346 validation attributes to your model.
 ./vendor/bin/pest
 ```
 
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests
+5. Submit a pull request
+
 ## License
 
-MIT License. See [license file](license.md) for more information.
+MIT License. See [LICENSE.md](LICENSE.md) for more information.
+
+## Donaciones
+
+Si encuentras útil este paquete y deseas apoyar su desarrollo y mantenimiento, puedes considerar hacer una donación.
+
+### Zinli
+
+- **ID de usuario:** 3-002-58546608-36
+- **Recargar:** https://recargas.zinli.com/4nVRQUniFdK8DBfPzzfyzR
+
+### Visa Prepagada Zinli
+
+- **Número:** 4850460061276928
+
+### Binance Pay
+
+- **Binance Pay ID:** 206414132
+
+¡Gracias por tu apoyo!
