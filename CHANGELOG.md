@@ -2,6 +2,18 @@
 
 All notable changes to `Shicontstand` will be documented in this file.
 
+## [1.2.2] - 2026-11-16
+
+### Fixed
+- Added missing ISO 6346 reefer size-type codes found in real fleets:
+  `45R0`, `45R8` (40ft high-cube reefer) and `22R0`, `22R8` (20ft reefer).
+- Made all seeders idempotent (`firstOrCreate`), so `db:seed` is safe to
+  re-run over already-seeded databases — needed to backfill new codes in
+  existing installs.
+
+### Added
+- `phpunit.xml` so the Pest suite runs standalone.
+
 ## [1.2.1] - 2026-05-28
 
 ### Security

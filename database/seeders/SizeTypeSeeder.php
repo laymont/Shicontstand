@@ -34,7 +34,9 @@ class SizeTypeSeeder extends Seeder
             ['type_group_code' => '22PF', 'code' => '22P7', 'description' => 'FLAT (GENSET CARRIER)'],
             ['type_group_code' => '22RC', 'code' => '22R9', 'description' => 'REEFER CONT.(NO FOOD)'],
             ['type_group_code' => '22RS', 'code' => '22R7', 'description' => 'BUILT-IN GEN. F. POWER SPLY OF REEF'],
+            ['type_group_code' => '22RT', 'code' => '22R0', 'description' => 'REEFER CONTAINER'],
             ['type_group_code' => '22RT', 'code' => '22R1', 'description' => 'REEFER CONTAINER'],
+            ['type_group_code' => '22RT', 'code' => '22R8', 'description' => 'REEFER CONTAINER (REFRIG./HEATED)'],
             ['type_group_code' => '22SN', 'code' => '22S1', 'description' => 'NAMED CARGO CONTAINER'],
             ['type_group_code' => '22TD', 'code' => '22T3', 'description' => 'TANK CONTAINER'],
             ['type_group_code' => '22TD', 'code' => '22T4', 'description' => 'TANK CONTAINER'],
@@ -82,7 +84,9 @@ class SizeTypeSeeder extends Seeder
             ['type_group_code' => '45PC', 'code' => '45P3', 'description' => 'FLAT (COLLAPSIBLE)'],
             ['type_group_code' => '45PC', 'code' => '45P8', 'description' => 'FLAT (COLL.FLUSH FOLDING)'],
             ['type_group_code' => '45RC', 'code' => '45R9', 'description' => 'REEFER CONT.(NO FOOD)'],
+            ['type_group_code' => '45RT', 'code' => '45R0', 'description' => 'REEFER HIGHCUBE CONTAINER'],
             ['type_group_code' => '45RT', 'code' => '45R1', 'description' => 'REEFER HIGHCUBE CONTAINER'],
+            ['type_group_code' => '45RT', 'code' => '45R8', 'description' => 'REEFER HIGHCUBE CONTAINER (REFRIG./HEATED)'],
             ['type_group_code' => '45UT', 'code' => '45U1', 'description' => 'OPEN TOP CONTAINER'],
             ['type_group_code' => '45UP', 'code' => '45U6', 'description' => 'HIGH CUBE HARDTOP CONT.'],
             ['type_group_code' => '46HR', 'code' => '46H0', 'description' => 'INSULATED CONTAINER'],
@@ -93,6 +97,6 @@ class SizeTypeSeeder extends Seeder
             ['type_group_code' => 'L2GP', 'code' => 'L2G1', 'description' => 'HIGH CUBE CONT.'],
             ['type_group_code' => 'L5GP', 'code' => 'L5G1', 'description' => 'HIGH CUBE CONT.'],
 
-        ])->each(fn ($item) => SizeType::create($item));
+        ])->each(fn ($item) => SizeType::firstOrCreate(['code' => $item['code']], $item));
     }
 }

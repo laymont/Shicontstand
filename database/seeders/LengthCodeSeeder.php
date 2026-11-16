@@ -22,6 +22,6 @@ class LengthCodeSeeder extends Seeder
             ['code' => 'L', 'container_length' => '45ft (13,716mm)'],
             ['code' => 'M', 'container_length' => '48ft (14,630mm)'],
             ['code' => 'N', 'container_length' => '49ft (14,935mm)'],
-        ])->each(fn ($item) => LengthCode::create($item));
+        ])->each(fn ($item) => LengthCode::firstOrCreate($item));
     }
 }

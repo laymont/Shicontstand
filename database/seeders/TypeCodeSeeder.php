@@ -58,6 +58,6 @@ class TypeCodeSeeder extends Seeder
             ['code' => 'S1', 'description' => 'Automobile carrier'],
             ['code' => 'S2', 'description' => 'Live fish carrier'],
 
-        ])->each(fn ($item) => TypeCode::create($item));
+        ])->each(fn ($item) => TypeCode::firstOrCreate(['code' => $item['code']], $item));
     }
 }

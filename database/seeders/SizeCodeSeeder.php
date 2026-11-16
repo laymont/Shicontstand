@@ -22,6 +22,6 @@ class SizeCodeSeeder extends Seeder
             ['code' => 'D', 'container_height' => '9ft (2,743mm)', 'width' => '8ft (2,438mm) < x ≤ 8ft 2in (2,500mm)'],
             ['code' => 'E', 'container_height' => '9ft 6in (2,896mm)', 'width' => '8ft (2,438mm) < x ≤ 8ft 2in (2,500mm)'],
             ['code' => 'F', 'container_height' => '> 9ft 6in (2,896mm)', 'width' => '8ft (2,438mm) < x ≤ 8ft 2in (2,500mm)'],
-        ])->each(fn ($item) => SizeCode::create($item));
+        ])->each(fn ($item) => SizeCode::firstOrCreate($item));
     }
 }
