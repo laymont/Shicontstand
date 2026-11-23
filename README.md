@@ -4,7 +4,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/laymont/shicontstand.svg?style=flat-square)](https://packagist.org/packages/laymont/shicontstand)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Package for ISO 6346 shipping container codes management. This package provides models, controllers, repositories, and resources for managing shipping container codes based on the ISO 6346 standard.
+Package for ISO 6346 shipping container codes management. This package provides models, controllers, repositories, and resources for managing shipping container codes based on the **ISO 6346:2022** standard (BIC Tables 1-3). Seeders ship a catalog of ~300 size/type combinations, including over-width codes and reduced-strength (alpha 4th character) markings.
 
 ## Compatibility
 
