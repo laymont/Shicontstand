@@ -9,16 +9,19 @@ All notable changes to `Shicontstand` will be documented in this file.
   - `length_codes`: added `5` (45ft), `A`, `D`, `E`, `F`, `K` and `P` (53ft);
     `L` kept as the legacy 1995 code for 45ft.
   - `size_codes`: added `7` (intermediate height), over-width codes `R`, `S`,
-    `T`, `U` (2438mm < w < 2500mm) and `L`, `M`, `N`, `P` (w > 2500mm).
+    `T`, `U` (2438mm < w <= 2500mm) and `L`, `M`, `N`, `P` (w > 2500mm).
   - `type_codes`: completed assigned detailed codes (`G9`, `S4/S8/S9`,
     `R5/R7/R8`, `H8`, `W0/W1`, `U6/U9`, `P6-P9`) and added the new 2022 type
     families `W` (foldable), `K` (pressurised tank), `N` (dry tank) and
     `A` (air/surface). Legacy `T` codes are kept.
   - Alternative type codes (alpha 4th character) for containers with reduced
-    stacking/racking strength are now seeded automatically.
+    stacking/racking strength are now seeded automatically, but only for
+    primary codes that have an assigned alternative in Table 3 (incl. the
+    `V4` -> `VE` exception).
   - `type_groups` / `size_types`: backfilled ~290 missing size/type
     combinations registered by BIC and observed in container markings
-    (e.g. `20BU`, `42VH`, `L5RT`, `P2G0`).
+    (e.g. `20BU`, `42VH`, `L5RT`, `P2G0`), plus the full 4-character
+    reduced-strength variants (e.g. `22GB` alongside `22G1`).
 
 ### Fixed
 - `length_codes`: removed duplicated `1` row and corrected official millimetre
@@ -28,6 +31,10 @@ All notable changes to `Shicontstand` will be documented in this file.
 - All seeders now match rows strictly by `code` in `firstOrCreate`, so
   re-running `db:seed` on existing installations inserts only the new codes
   and never duplicates or overwrites previously seeded data.
+- `size_types`: reclassified `22R0`/`45R0` into the `RE` group and
+  `22R7`/`22R8`/`45R8` into the `RH` group to match the ISO 6346:2022
+  Table 3 assignments (added the missing `22RE`, `45RE`, `22RH` and `45RH`
+  type groups).
 
 ### Security
 - Updated `semantic-release` (19.x → 26.x) and `@semantic-release/github`

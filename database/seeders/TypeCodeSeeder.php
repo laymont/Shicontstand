@@ -61,7 +61,7 @@ class TypeCodeSeeder extends Seeder
             ['code' => 'U2', 'description' => 'Open top container - Openings at one or both ends + openings on one or both sides'],
             ['code' => 'U3', 'description' => 'Open top container - Openings at one or both ends + openings on one or both sides + removable top members in end frames'],
             ['code' => 'U4', 'description' => 'Open top container - Openings at one or both ends + partial opening on one side and full opening on the other side'],
-            ['code' => 'U5', 'description' => 'Open top container - Complete, fixed side and end walls (no doors)'],
+            ['code' => 'U5', 'description' => 'Open top container - Complete, fixed side and end walls, no doors (unassigned in ISO 6346:2022, observed in container markings)'],
             ['code' => 'U6', 'description' => 'Open topped container with removable hard top'],
             ['code' => 'U9', 'description' => 'Open top container - Coil carrier'],
             ['code' => 'P0', 'description' => 'Platform-based container with incomplete superstructure - Platform (container)'],
@@ -107,14 +107,20 @@ class TypeCodeSeeder extends Seeder
         /**
          * Alternative detailed type codes: an alpha character in the 4th position of the
          * size-type code indicates a container with reduced stacking and/or racking
-         * strength (ISO 6346:2022, Table 3 "detailed type code b").
+         * strength (ISO 6346:2022, Table 3 "detailed type code b"). Variants are only
+         * generated for primary codes that have an assigned alternative in the BIC
+         * registry; V4 is the single exception to the uniform letter mapping (VE).
          */
         $altMap = ['0' => 'A', '1' => 'B', '2' => 'D', '3' => 'G', '4' => 'J', '5' => 'M', '6' => 'V', '7' => 'W', '8' => 'X', '9' => 'Y'];
+        $altExceptions = ['V4' => 'VE'];
+        // No assigned alternative in ISO 6346:2022 Table 3 (unassigned positions,
+        // observed markings and the legacy 1995 T series)
+        $noAlt = ['A0', 'R9', 'U5', 'V3', 'T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9'];
 
         $reducedStrengthCodes = $codes
-            ->reject(fn ($item) => $item['code'] === 'A0')
+            ->reject(fn ($item) => in_array($item['code'], $noAlt, true))
             ->map(fn ($item) => [
-                'code' => $item['code'][0].$altMap[$item['code'][1]],
+                'code' => $altExceptions[$item['code']] ?? $item['code'][0].$altMap[$item['code'][1]],
                 'description' => $item['description'].' (reduced stacking and/or racking strength)',
             ]);
 

@@ -170,6 +170,11 @@ class TypeGroupSeeder extends Seeder
             ['code' => 'L5RT', 'description' => 'REEFER CONTAINER'],
             ['code' => 'M2GP', 'description' => 'GENERAL PURPOSE CONT.'],
             ['code' => 'P2GP', 'description' => 'GENERAL PURPOSE CONT.'],
+            // Groups required by the ISO 6346:2022 R-code classification (RE/RH)
+            ['code' => '22RE', 'description' => 'REEFER CONTAINER'],
+            ['code' => '45RE', 'description' => 'REEFER HIGHCUBE CONTAINER'],
+            ['code' => '22RH', 'description' => 'HEATED CONTAINER'],
+            ['code' => '45RH', 'description' => 'HEATED HIGHCUBE CONTAINER'],
 
         ])->each(fn ($item) => TypeGroup::firstOrCreate(['code' => $item['code']], $item));
     }

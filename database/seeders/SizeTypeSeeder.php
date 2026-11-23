@@ -9,7 +9,7 @@ class SizeTypeSeeder extends Seeder
 {
     public function run()
     {
-        collect([
+        $items = collect([
             ['type_group_code' => '20GP', 'code' => '20G0', 'description' => 'GENERAL PURPOSE CONT.'],
             ['type_group_code' => '20GP', 'code' => '20G1', 'description' => 'GENERAL PURPOSE CONT.'],
             ['type_group_code' => '20HR', 'code' => '20H0', 'description' => 'INSULATED CONTAINER'],
@@ -33,10 +33,10 @@ class SizeTypeSeeder extends Seeder
             ['type_group_code' => '22PF', 'code' => '22P1', 'description' => 'FLAT (FIXED ENDS)'],
             ['type_group_code' => '22PF', 'code' => '22P7', 'description' => 'FLAT (GENSET CARRIER)'],
             ['type_group_code' => '22RC', 'code' => '22R9', 'description' => 'REEFER CONT.(NO FOOD)'],
-            ['type_group_code' => '22RS', 'code' => '22R7', 'description' => 'BUILT-IN GEN. F. POWER SPLY OF REEF'],
-            ['type_group_code' => '22RT', 'code' => '22R0', 'description' => 'REEFER CONTAINER'],
+            ['type_group_code' => '22RH', 'code' => '22R7', 'description' => 'HEATED CONTAINER (ISO 6346:2022)'],
+            ['type_group_code' => '22RE', 'code' => '22R0', 'description' => 'REEFER CONTAINER'],
             ['type_group_code' => '22RT', 'code' => '22R1', 'description' => 'REEFER CONTAINER'],
-            ['type_group_code' => '22RT', 'code' => '22R8', 'description' => 'REEFER CONTAINER (REFRIG./HEATED)'],
+            ['type_group_code' => '22RH', 'code' => '22R8', 'description' => 'HEATED CONTAINER (SELF-POWERED) (ISO 6346:2022)'],
             ['type_group_code' => '22SN', 'code' => '22S1', 'description' => 'NAMED CARGO CONTAINER'],
             ['type_group_code' => '22TD', 'code' => '22T3', 'description' => 'TANK CONTAINER'],
             ['type_group_code' => '22TD', 'code' => '22T4', 'description' => 'TANK CONTAINER'],
@@ -84,9 +84,9 @@ class SizeTypeSeeder extends Seeder
             ['type_group_code' => '45PC', 'code' => '45P3', 'description' => 'FLAT (COLLAPSIBLE)'],
             ['type_group_code' => '45PC', 'code' => '45P8', 'description' => 'FLAT (COLL.FLUSH FOLDING)'],
             ['type_group_code' => '45RC', 'code' => '45R9', 'description' => 'REEFER CONT.(NO FOOD)'],
-            ['type_group_code' => '45RT', 'code' => '45R0', 'description' => 'REEFER HIGHCUBE CONTAINER'],
+            ['type_group_code' => '45RE', 'code' => '45R0', 'description' => 'REEFER HIGHCUBE CONTAINER'],
             ['type_group_code' => '45RT', 'code' => '45R1', 'description' => 'REEFER HIGHCUBE CONTAINER'],
-            ['type_group_code' => '45RT', 'code' => '45R8', 'description' => 'REEFER HIGHCUBE CONTAINER (REFRIG./HEATED)'],
+            ['type_group_code' => '45RH', 'code' => '45R8', 'description' => 'HEATED HIGHCUBE CONTAINER (SELF-POWERED) (ISO 6346:2022)'],
             ['type_group_code' => '45UT', 'code' => '45U1', 'description' => 'OPEN TOP CONTAINER'],
             ['type_group_code' => '45UP', 'code' => '45U6', 'description' => 'HIGH CUBE HARDTOP CONT.'],
             ['type_group_code' => '46HR', 'code' => '46H0', 'description' => 'INSULATED CONTAINER'],
@@ -314,6 +314,36 @@ class SizeTypeSeeder extends Seeder
             ['type_group_code' => 'M2GP', 'code' => 'M2G0', 'description' => 'GENERAL PURPOSE CONT.'],
             ['type_group_code' => 'P2GP', 'code' => 'P2G0', 'description' => 'GENERAL PURPOSE CONT.'],
 
-        ])->each(fn ($item) => SizeType::firstOrCreate(['code' => $item['code']], $item));
+        ]);
+
+        /**
+         * Full size-type variants for detailed type codes that have an assigned
+         * alternative: an alpha 4th character marks a container with reduced
+         * stacking and/or racking strength (ISO 6346:2022, Table 3). Variants
+         * keep the same size characters and type group as their primary code.
+         */
+        $altMap = ['0' => 'A', '1' => 'B', '2' => 'D', '3' => 'G', '4' => 'J', '5' => 'M', '6' => 'V', '7' => 'W', '8' => 'X', '9' => 'Y'];
+        $altExceptions = ['V4' => 'VE'];
+        // Detail codes without an assigned alternative in Table 3
+        $noAlt = ['A0', 'R9', 'U5', 'V3', 'T0', 'T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9'];
+
+        $variants = $items
+            ->map(function ($item) use ($altMap, $altExceptions, $noAlt) {
+                $detail = substr($item['code'], 2);
+                if (in_array($detail, $noAlt, true)) {
+                    return null;
+                }
+                $alt = $altExceptions[$detail] ?? $detail[0].$altMap[$detail[1]];
+
+                return [
+                    'type_group_code' => $item['type_group_code'],
+                    'code' => substr($item['code'], 0, 2).$alt,
+                    'description' => $item['description'].' (REDUCED STACKING AND/OR RACKING STRENGTH)',
+                ];
+            })
+            ->filter();
+
+        $items->concat($variants)
+            ->each(fn ($item) => SizeType::firstOrCreate(['code' => $item['code']], $item));
     }
 }
