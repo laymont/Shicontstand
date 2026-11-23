@@ -35,6 +35,10 @@ All notable changes to `Shicontstand` will be documented in this file.
   `22R7`/`22R8`/`45R8` into the `RH` group to match the ISO 6346:2022
   Table 3 assignments (added the missing `22RE`, `45RE`, `22RH` and `45RH`
   type groups).
+- `size_types`: reclassified `P6`-`P9` rows into the `PT` named-cargo group
+  (`22P7` was mislabelled as a genset carrier — it is a car carrier),
+  `U6` hardtop rows into `UT`, and `45B3` into `BU` (added `22PT`, `42PT`,
+  `45PT` and `45BU` groups).
 
 ### Security
 - Updated `semantic-release` (19.x → 26.x) and `@semantic-release/github`

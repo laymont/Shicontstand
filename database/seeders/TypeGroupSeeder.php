@@ -175,6 +175,11 @@ class TypeGroupSeeder extends Seeder
             ['code' => '45RE', 'description' => 'REEFER HIGHCUBE CONTAINER'],
             ['code' => '22RH', 'description' => 'HEATED CONTAINER'],
             ['code' => '45RH', 'description' => 'HEATED HIGHCUBE CONTAINER'],
+            // Groups required by the ISO 6346:2022 P-code classification (PT = named cargo)
+            ['code' => '22PT', 'description' => 'PLATFORM-BASED CONTAINER (NAMED CARGO)'],
+            ['code' => '42PT', 'description' => 'PLATFORM-BASED CONTAINER (NAMED CARGO)'],
+            ['code' => '45PT', 'description' => 'PLATFORM-BASED CONTAINER (NAMED CARGO)'],
+            ['code' => '45BU', 'description' => 'BULK CONTAINER'],
 
         ])->each(fn ($item) => TypeGroup::firstOrCreate(['code' => $item['code']], $item));
     }
