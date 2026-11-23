@@ -1,6 +1,6 @@
 {
     "name": "shicontstand",
-    "version": "0.0.1",
+    "version": "1.3.0",
     "description": "to apply iso 6346",
     "author": "Laymont Arratia",
     "license": "MIT",
@@ -10,9 +10,12 @@
         "plugins": [
             "@semantic-release/commit-analyzer",
             "@semantic-release/release-notes-generator",
-            ["@semantic-release/npm", {
-                "npmPublish": false
-            }],
+            [
+                "@semantic-release/npm",
+                {
+                    "npmPublish": false
+                }
+            ],
             "@semantic-release/changelog",
             [
                 "@semantic-release/git",
@@ -41,11 +44,20 @@
     "plugins": [
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
-        ["@semantic-release/github", {
-            "assets": [
-                {"path": "dist/asset.min.css", "label": "CSS distribution"},
-                {"path": "dist/asset.min.js", "label": "JS distribution"}
-            ]
-        }]
+        [
+            "@semantic-release/github",
+            {
+                "assets": [
+                    {
+                        "path": "dist/asset.min.css",
+                        "label": "CSS distribution"
+                    },
+                    {
+                        "path": "dist/asset.min.js",
+                        "label": "JS distribution"
+                    }
+                ]
+            }
+        ]
     ]
 }

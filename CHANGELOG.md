@@ -1,3 +1,14 @@
+# [1.3.0](https://github.com/laymont/Shicontstand/compare/1.2.2...1.3.0) (2026-11-23)
+
+### Bug Fixes
+
+* **seeders:** aplica correcciones del Devin Review (PR [#16](https://github.com/laymont/Shicontstand/issues/16)) ([79deb3f](https://github.com/laymont/Shicontstand/commit/79deb3fad18272872bbf87080a508e94f67ffb75))
+* **seeders:** reclasifica P6-P9 a PT, U6 a UT y 45B3 a BU (Devin Review) ([578876e](https://github.com/laymont/Shicontstand/commit/578876e9b61590333457d841af001de258298751))
+
+### Features
+
+* **seeders:** actualiza el catalogo de codigos ISO a ISO 6346:2022 ([6bcc96a](https://github.com/laymont/Shicontstand/commit/6bcc96a076db9365e43c295b7eb83540e815ece3))
+
 # Changelog
 
 All notable changes to `Shicontstand` will be documented in this file.
