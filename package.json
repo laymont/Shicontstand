@@ -30,12 +30,7 @@
         "branches": [
             "main",
             "next"
-        ],
-        "config": {
-            "commitizen": {
-                "path": "./node_modules/cz-conventional-changelog"
-            }
-        }
+        ]
     },
     "devDependencies": {
         "@semantic-release/changelog": "^6.0.3",
